@@ -4,11 +4,18 @@ from app.log import logger
 from threading import Event
 from app.plugins import _PluginBase
 from app.core.config import settings
+from app.schemas import StorageSchema
+from app.utils.system import SystemUtils
 from datetime import datetime, timedelta
+from app.core.metainfo import MetaInfoPath
+from app.helper.storage import StorageHelper
+from app.schemas.types import NotificationType
+from app.modules.filemanager import FileManagerModule
 from apscheduler.triggers.cron import CronTrigger
 from typing import Any, List, Dict, Tuple, Optional
-from app.schemas.types import NotificationType
 from apscheduler.schedulers.background import BackgroundScheduler
+
+from app.plugins.subtitlesfontcollection.font_downloader import FontDownloader
 
 
 class SubtitlesFontCollection(_PluginBase):
@@ -39,12 +46,18 @@ class SubtitlesFontCollection(_PluginBase):
     # 私有属性
     _enabled = False
     _font_path = ""
-    _media_path = ""
     _notify = True  # 是否发送通知
-    _active_tab = "all"  # 当前激活的Tab: all/downloaded/downloading/missing
+    _active_tab = "all"  # 当前激活的Tab: all/downloaded/missing
+    _media_path = ""
+    _exclude_paths = ""
+    _auto_download = True  # 是否自动下载缺失字体
+    _font_sources = ""  # 字体下载源URL列表
+    _use_caution_fonts = False  # 是否启用慎用字体包
+    _scheduler = None
 
     # 退出事件
     _event = Event()
+
 
     def __cron2text(self, cron: str) -> str:
         """
@@ -190,11 +203,15 @@ class SubtitlesFontCollection(_PluginBase):
         """
         if config:
             self._cron = config.get("cron")
-            self._onlyonce = config.get("onlyonce")
+            self._run_once = config.get("onlyonce")
             self._enabled = config.get("enabled", False)
             self._font_path = config.get("font_path", "")
-            self._media_path = config.get("media_path", "")
             self._notify = config.get("notify", True)
+            self._media_path = config.get("media_path", "")
+            self._exclude_paths = config.get("exclude_paths", "")
+            self._auto_download = config.get("auto_download", True)
+            self._font_sources = config.get("font_sources", "")
+            self._use_caution_fonts = config.get("use_caution_fonts", False)
 
             # 处理清除数据
             if config.get("clear_data"):
@@ -202,25 +219,23 @@ class SubtitlesFontCollection(_PluginBase):
                 # 关闭清除数据开关
                 config["clear_data"] = False
                 self.update_config(config)
-                logger.info("字幕字体补全插件数据已清除")
 
         logger.info(f"字幕字体补全插件初始化完成，启用状态：{self._enabled}")
 
-        # 启动定时任务 & 立即运行一次
-        if self._enabled or self._onlyonce:
-
-            if self._onlyonce:
-                logger.info(f"字幕字体补全，立即运行一次")
-                self._scheduler = BackgroundScheduler(timezone=settings.TZ)
-                self._scheduler.add_job(
-                    func=self.__subtitlesfontcollection,
-                    trigger="date",
-                    run_date=datetime.now(tz=pytz.timezone(settings.TZ))
-                    + timedelta(seconds=3),
-                    name="字幕字体补全",
-                )
+        # 启动定时任务
+        if self._enabled:
+            logger.debug("字幕字体补全插件配置：")
+            logger.debug(f"立即运行一次：{self._run_once}")
+            logger.debug(
+                f"执行周期：{self.__cron2text(self._cron) if self._cron else '默认每7天执行一次'}"
+            )
+            logger.debug(f"字体存储路径：{self._font_path}")
+            logger.debug(f"媒体文件路径：{self._media_path}")
+            logger.debug(f"排除路径：{self._exclude_paths}")
+            if self._run_once:
+                self.__run_once()
                 # 关闭一次性开关
-                self._onlyonce = False
+                self._run_once = False
                 self.update_config(
                     {
                         "onlyonce": False,
@@ -228,70 +243,421 @@ class SubtitlesFontCollection(_PluginBase):
                         "cron": self._cron,
                         "font_path": self._font_path,
                         "media_path": self._media_path,
+                        "exclude_paths": self._exclude_paths,
                         "notify": self._notify,
+                        "auto_download": self._auto_download,
+                        "font_sources": self._font_sources,
+                        "use_caution_fonts": self._use_caution_fonts,
                     }
                 )
-                if self._scheduler.get_jobs():
-                    # 启动服务
-                    self._scheduler.print_jobs()
-                    self._scheduler.start()
-        if self._enabled:
-            logger.info(f"仅运行一次：{self._onlyonce}")
-            logger.info(
-                f"执行周期：{self.__cron2text(self._cron) if self._cron else '默认每7天执行一次'}"
-            )
-            logger.info(f"字体存储路径：{self._font_path}")
-            logger.info(f"媒体文件路径：{self._media_path}")
+
+    def __run_once(self):
+        self.__insert_debug_data()
+        logger.info(f"字幕字体补全，立即运行一次...")
+        self._scheduler = BackgroundScheduler(timezone=settings.TZ)
+        self._scheduler.add_job(
+            func=self.__subtitlesfontcollection,
+            trigger="date",
+            run_date=datetime.now(tz=pytz.timezone(settings.TZ)) + timedelta(seconds=3),
+            name="字幕字体补全",
+        )
+        if self._scheduler.get_jobs():
+            self._scheduler.print_jobs()
+            self._scheduler.start()
 
     def __clear_all_data(self):
         """
         清除所有插件数据
         """
-        # 清除字体数据
+        # 清除媒体-字幕关系数据
+        self.save_data("media_subtitles", {})
+        # 清除字体全局数据
         self.save_data("fonts", {})
         # 清除统计数据
-        self.save_data("missing_font_count", 0)
-        self.save_data("downloaded_font_count", 0)
-        self.save_data("downloading_font_count", 0)
-        logger.info("已清除所有字体数据")
-
-    def __sub_missing_fonts_count(self):
-        """
-        计算缺失的字体文件数量
-        """
-        fonts = self.get_data("fonts") or {}
-        missing_count = sum(
-            1 for font in fonts.values() if font.get("actions") == "缺失"
+        self.save_data(
+            "stats",
+            {
+                "total_media": 0,
+                "total_subtitles": 0,
+                "total_fonts": 0,
+                "downloaded_fonts": 0,
+                "missing_fonts": 0,
+            },
         )
-        self.save_data("missing_font_count", missing_count)
+        logger.info("已清除所有插件数据")
 
-    def __sub_downloaded_fonts_count(self):
+    def __insert_debug_data(self):
         """
-        计算已下载的字体文件数量
+        插入调试数据，用于测试和开发
+        数据结构：
+        - media_subtitles: 媒体-字幕关系数据（按媒体路径组织）
+        - fonts: 字体全局数据（去重存储，一个字体可被多个字幕引用）
         """
-        fonts = self.get_data("fonts") or {}
-        downloaded_count = sum(
-            1 for font in fonts.values() if font.get("actions") == "已下载"
-        )
-        self.save_data("downloaded_font_count", downloaded_count)
+        from datetime import datetime
+        return
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    def __sub_downloading_fonts_count(self):
-        """
-        计算下载中的字体文件数量
-        """
-        fonts = self.get_data("fonts") or {}
-        downloading_count = sum(
-            1 for font in fonts.values() if font.get("actions") == "下载中"
+        # 1. 媒体-字幕关系数据
+        debug_media_subtitles = {
+            # 电影示例
+            "/movies/阿凡达 (2009)": {
+                "media_name": "阿凡达",
+                "media_type": "movie",
+                "year": "2009",
+                "subtitles": {
+                    "阿凡达.简体中文.ass": {
+                        "subtitle_path": "/movies/阿凡达 (2009)/阿凡达.简体中文.ass",
+                        "fonts": ["SimHei", "Microsoft YaHei", "FZShuTi"],
+                        "scan_time": current_time,
+                    },
+                    "阿凡达.繁体中文.ass": {
+                        "subtitle_path": "/movies/阿凡达 (2009)/阿凡达.繁体中文.ass",
+                        "fonts": ["SimSun", "KaiTi", "HYQiHei"],
+                        "scan_time": current_time,
+                    },
+                },
+            },
+            "/movies/盗梦空间 (2010)": {
+                "media_name": "盗梦空间",
+                "media_type": "movie",
+                "year": "2010",
+                "subtitles": {
+                    "盗梦空间.简中特效.ass": {
+                        "subtitle_path": "/movies/盗梦空间 (2010)/盗梦空间.简中特效.ass",
+                        "fonts": ["SimHei", "FZLanTingHei", "SourceHanSans"],
+                        "scan_time": current_time,
+                    }
+                },
+            },
+            # 电视剧示例
+            "/tv/权力的游戏 (2011)": {
+                "media_name": "权力的游戏",
+                "media_type": "tv",
+                "year": "2011",
+                "seasons": {
+                    "S01": {
+                        "season_name": "第一季",
+                        "episodes": {
+                            "E01": {
+                                "episode_name": "凛冬将至",
+                                "subtitles": {
+                                    "S01E01.简中.ass": {
+                                        "subtitle_path": "/tv/权力的游戏 (2011)/S01/S01E01.简中.ass",
+                                        "fonts": ["SimHei", "FangSong", "NotoSansCJK"],
+                                        "scan_time": current_time,
+                                    },
+                                    "S01E01.繁中.ass": {
+                                        "subtitle_path": "/tv/权力的游戏 (2011)/S01/S01E01.繁中.ass",
+                                        "fonts": ["SimSun", "KaiTi"],
+                                        "scan_time": current_time,
+                                    },
+                                },
+                            },
+                            "E02": {
+                                "episode_name": "国王大道",
+                                "subtitles": {
+                                    "S01E02.简中.ass": {
+                                        "subtitle_path": "/tv/权力的游戏 (2011)/S01/S01E02.简中.ass",
+                                        "fonts": ["SimHei", "Microsoft YaHei"],
+                                        "scan_time": current_time,
+                                    }
+                                },
+                            },
+                            "E03": {
+                                "episode_name": "雪诺大人",
+                                "subtitles": {
+                                    "S01E03.简中.ass": {
+                                        "subtitle_path": "/tv/权力的游戏 (2011)/S01/S01E03.简中.ass",
+                                        "fonts": ["SimHei", "FZShuTi", "HYQiHei"],
+                                        "scan_time": current_time,
+                                    }
+                                },
+                            },
+                        },
+                    },
+                    "S02": {
+                        "season_name": "第二季",
+                        "episodes": {
+                            "E01": {
+                                "episode_name": "北境与南境",
+                                "subtitles": {
+                                    "S02E01.简中.ass": {
+                                        "subtitle_path": "/tv/权力的游戏 (2011)/S02/S02E01.简中.ass",
+                                        "fonts": ["SimHei", "SourceHanSans"],
+                                        "scan_time": current_time,
+                                    }
+                                },
+                            }
+                        },
+                    },
+                },
+            },
+            "/tv/绝命毒师 (2008)": {
+                "media_name": "绝命毒师",
+                "media_type": "tv",
+                "year": "2008",
+                "seasons": {
+                    "S01": {
+                        "season_name": "第一季",
+                        "episodes": {
+                            "E01": {
+                                "episode_name": "试播集",
+                                "subtitles": {
+                                    "S01E01.简中.ass": {
+                                        "subtitle_path": "/tv/绝命毒师 (2008)/S01/S01E01.简中.ass",
+                                        "fonts": ["SimHei", "FZLanTingHei"],
+                                        "scan_time": current_time,
+                                    }
+                                },
+                            }
+                        },
+                    }
+                },
+            },
+        }
+
+        # 2. 字体全局数据（去重存储）
+        debug_fonts = {
+            # 已下载的字体
+            "SimHei": {
+                "font_name": "黑体",
+                "file_name": "SimHei.ttf",
+                "status": "downloaded",
+                "file_path": "/fonts/SimHei.ttf",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.简体中文.ass",
+                    "/movies/盗梦空间 (2010)/盗梦空间.简中特效.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E01.简中.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E02.简中.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E03.简中.ass",
+                    "/tv/权力的游戏 (2011)/S02/S02E01.简中.ass",
+                    "/tv/绝命毒师 (2008)/S01/S01E01.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "SimSun": {
+                "font_name": "宋体",
+                "file_name": "SimSun.ttc",
+                "status": "downloaded",
+                "file_path": "/fonts/SimSun.ttc",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.繁体中文.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E01.繁中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "Microsoft YaHei": {
+                "font_name": "微软雅黑",
+                "file_name": "msyh.ttc",
+                "status": "downloaded",
+                "file_path": "/fonts/msyh.ttc",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.简体中文.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E02.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            # 缺失的字体
+            "FZShuTi": {
+                "font_name": "方正舒体",
+                "file_name": "FZSTK.TTF",
+                "status": "missing",
+                "file_path": "",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.简体中文.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E03.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "KaiTi": {
+                "font_name": "楷体",
+                "file_name": "simkai.ttf",
+                "status": "missing",
+                "file_path": "",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.繁体中文.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E01.繁中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "FangSong": {
+                "font_name": "仿宋",
+                "file_name": "simfang.ttf",
+                "status": "missing",
+                "file_path": "",
+                "used_by": ["/tv/权力的游戏 (2011)/S01/S01E01.简中.ass"],
+                "update_time": current_time,
+            },
+            "HYQiHei": {
+                "font_name": "汉仪旗黑",
+                "file_name": "HYQiHei.ttf",
+                "status": "missing",
+                "file_path": "",
+                "used_by": [
+                    "/movies/阿凡达 (2009)/阿凡达.繁体中文.ass",
+                    "/tv/权力的游戏 (2011)/S01/S01E03.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "FZLanTingHei": {
+                "font_name": "方正兰亭黑",
+                "file_name": "FZLTHJW.TTF",
+                "status": "missing",
+                "file_path": "",
+                "used_by": [
+                    "/movies/盗梦空间 (2010)/盗梦空间.简中特效.ass",
+                    "/tv/绝命毒师 (2008)/S01/S01E01.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "SourceHanSans": {
+                "font_name": "思源黑体",
+                "file_name": "SourceHanSansSC-Regular.otf",
+                "status": "missing",
+                "file_path": "",
+                "used_by": [
+                    "/movies/盗梦空间 (2010)/盗梦空间.简中特效.ass",
+                    "/tv/权力的游戏 (2011)/S02/S02E01.简中.ass",
+                ],
+                "update_time": current_time,
+            },
+            "NotoSansCJK": {
+                "font_name": "Noto Sans CJK",
+                "file_name": "NotoSansCJKsc-Regular.otf",
+                "status": "missing",
+                "file_path": "",
+                "used_by": ["/tv/权力的游戏 (2011)/S01/S01E01.简中.ass"],
+                "update_time": current_time,
+            },
+        }
+
+        # 保存数据
+        self.save_data("media_subtitles", debug_media_subtitles)
+        self.save_data("fonts", debug_fonts)
+
+        # 更新统计数据
+        self.__update_all_fonts_status()
+
+        logger.info(
+            f"已插入调试数据：{len(debug_media_subtitles)} 个媒体，{len(debug_fonts)} 个字体"
         )
-        self.save_data("downloading_font_count", downloading_count)
 
     def __update_all_fonts_status(self):
         """
-        更新所有字体的状态统计
+        更新所有统计数据
         """
-        self.__sub_missing_fonts_count()
-        self.__sub_downloaded_fonts_count()
-        self.__sub_downloading_fonts_count()
+        fonts = self.get_data("fonts") or {}
+        media_subtitles = self.get_data("media_subtitles") or {}
+
+        # 统计字体状态
+        downloaded_count = sum(
+            1 for f in fonts.values() if f.get("status") == "downloaded"
+        )
+        missing_count = sum(1 for f in fonts.values() if f.get("status") == "missing")
+
+        # 统计媒体和字幕数量
+        total_media = len(media_subtitles)
+        total_subtitles = 0
+        for media in media_subtitles.values():
+            if media.get("media_type") == "movie":
+                total_subtitles += len(media.get("subtitles", {}))
+            elif media.get("media_type") == "tv":
+                for season in media.get("seasons", {}).values():
+                    for episode in season.get("episodes", {}).values():
+                        total_subtitles += len(episode.get("subtitles", {}))
+
+        # 保存统计数据
+        stats = {
+            "total_media": total_media,
+            "total_subtitles": total_subtitles,
+            "total_fonts": len(fonts),
+            "downloaded_fonts": downloaded_count,
+            "missing_fonts": missing_count,
+        }
+        self.save_data("stats", stats)
+        logger.debug(f"统计数据已更新: {stats}")
+        return stats
+
+    def __get_font_status_text(self, status: str) -> str:
+        """
+        获取字体状态的中文文本
+        """
+        status_map = {
+            "downloaded": "已下载",
+            "missing": "缺失",
+        }
+        return status_map.get(status, status)
+
+    def __get_font_status_color(self, status: str) -> str:
+        """
+        获取字体状态的颜色
+        """
+        color_map = {
+            "downloaded": "success",
+            "missing": "warning",
+        }
+        return color_map.get(status, "default")
+
+    def __add_font_record(
+        self,
+        font_id: str,
+        font_name: str,
+        file_name: str,
+        status: str = "missing",
+        subtitle_path: str = None,
+    ):
+        """
+        添加或更新字体记录
+        :param font_id: 字体ID（唯一标识）
+        :param font_name: 字体显示名称
+        :param file_name: 字体文件名
+        :param status: 字体状态（downloaded/missing）
+        :param subtitle_path: 引用该字体的字幕路径
+        """
+        from datetime import datetime
+
+        fonts = self.get_data("fonts") or {}
+
+        if font_id in fonts:
+            # 字体已存在，更新引用列表
+            if subtitle_path and subtitle_path not in fonts[font_id].get("used_by", []):
+                fonts[font_id]["used_by"].append(subtitle_path)
+        else:
+            # 新增字体记录
+            fonts[font_id] = {
+                "font_name": font_name,
+                "file_name": file_name,
+                "status": status,
+                "file_path": "",
+                "used_by": [subtitle_path] if subtitle_path else [],
+                "update_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            }
+
+        self.save_data("fonts", fonts)
+
+    def __update_font_record(
+        self,
+        font_id: str,
+        status: str = None,
+        file_path: str = None,
+    ):
+        """
+        更新字体记录状态
+        :param font_id: 字体ID
+        :param status: 字体状态（downloaded/missing）
+        :param file_path: 下载后的文件路径
+        """
+        from datetime import datetime
+
+        fonts = self.get_data("fonts") or {}
+
+        if font_id in fonts:
+            if status is not None:
+                fonts[font_id]["status"] = status
+            if file_path is not None:
+                fonts[font_id]["file_path"] = file_path
+            fonts[font_id]["update_time"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self.save_data("fonts", fonts)
 
     def __send_font_notification(
         self,
@@ -336,7 +702,7 @@ class SubtitlesFontCollection(_PluginBase):
             title=f"[{media_name}] 字幕字体补全任务执行完成",
             text=text,
         )
-        logger.info(f"已发送字体补全通知：{media_name} - {subtitle_file}")
+        logger.debug(f"已发送字体补全通知：{media_name} - {subtitle_file}")
 
     def get_state(self) -> bool:
         """
@@ -383,7 +749,7 @@ class SubtitlesFontCollection(_PluginBase):
         config = self.get_config() or {}
         config["active_tab"] = tab
         self.update_config(config)
-        logger.info(f"切换Tab到: {tab}")
+        logger.debug(f"切换Tab到: {tab}")
         return {"success": True, "active_tab": tab}
 
     def get_form(self) -> Tuple[List[dict], Dict[str, Any]]:
@@ -484,6 +850,41 @@ class SubtitlesFontCollection(_PluginBase):
                                         },
                                     }
                                 ],
+                            },
+                            {
+                                "component": "VCol",
+                                "props": {"cols": 12},
+                                "content": [
+                                    {
+                                        "component": "VTextarea",
+                                        "props": {
+                                            "model": "media_path",
+                                            "label": "媒体文件路径",
+                                            "rows": 3,
+                                            "placeholder": "每一行一个目录",
+                                        },
+                                    }
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        "component": "VRow",
+                        "content": [
+                            {
+                                "component": "VCol",
+                                "props": {"cols": 12},
+                                "content": [
+                                    {
+                                        "component": "VTextarea",
+                                        "props": {
+                                            "model": "exclude_paths",
+                                            "label": "排除路径",
+                                            "rows": 2,
+                                            "placeholder": "每一行一个目录",
+                                        },
+                                    }
+                                ],
                             }
                         ],
                     },
@@ -495,14 +896,33 @@ class SubtitlesFontCollection(_PluginBase):
                                 "props": {"cols": 12},
                                 "content": [
                                     {
-                                        "component": "VTextField",
+                                        "component": "VSwitch",
                                         "props": {
-                                            "model": "media_path",
-                                            "label": "媒体文件位置",
-                                            "placeholder": "/Video",
-                                            "hint": "媒体文件存储的完整路径，例如：/Video",
-                                            "persistent-hint": True,
-                                            "clearable": True,
+                                            "model": "use_caution_fonts",
+                                            "label": "启用慎用字体包",
+                                        },
+                                    }
+                                ],
+                            }
+                        ],
+                    },
+                    {
+                        "component": "VRow",
+                        "content": [
+                            {
+                                "component": "VCol",
+                                "props": {"cols": 12},
+                                "content": [
+                                    {
+                                        "component": "VAlert",
+                                        "props": {
+                                            "type": "warning",
+                                            "variant": "tonal",
+                                            "title": "⚠️ 慎用字体包警告",
+                                            "text": "慎用字体包中的字体都是第三方魔改的字体，且存在着一些问题，我们也建议尽量不要使用这类字体。例如：\n"
+                                            "• "方正晶黑"是第三方伪造的字体，由几个字体拼凑而成，而且有些字的字形是错误的，并非方正出品的字体；\n"
+                                            "• "熊兔流星体"的 Family 属性为"Heiti SC"，安装后，网页中原本应以"黑体"显示的字可能会以"熊兔流星体"显示。\n"
+                                            "请谨慎开启此选项！",
                                         },
                                     }
                                 ],
@@ -521,7 +941,9 @@ class SubtitlesFontCollection(_PluginBase):
                                         "props": {
                                             "type": "info",
                                             "variant": "tonal",
-                                            "text": "配置说明：\n1. 字体文件存储位置：用于存放下载的字体文件\n2. 媒体文件位置：用于扫描包含字幕的媒体文件",
+                                            "text": "配置说明："
+                                            "1. 字体文件存储位置：用于存放下载的字体文件。"
+                                            "2. 媒体文件路径后拼接#【存储类型】，指定该媒所在的存储类型。默认本地存储，例如：/media/movies#Local。支持的存储类型有Local（本地）、Alipan（阿里云盘）、115（115网盘）、RClone、OpenList",
                                         },
                                     }
                                 ],
@@ -530,58 +952,38 @@ class SubtitlesFontCollection(_PluginBase):
                     },
                 ],
             }
-        ], {"enabled": False, "font_path": "", "media_path": "", "notify": True}
+        ], {
+            "enabled": False,
+            "font_path": "",
+            "media_path": "",
+            "notify": True,
+            "exclude_paths": "",
+            "use_caution_fonts": False,
+        }
 
     def get_page(self) -> List[dict]:
+        """
+        构建插件数据页面
+        支持两种视图：媒体视图（按媒体-字幕层级展示）和字体视图（按字体状态展示）
+        """
         # 从配置中读取当前Tab状态
         config = self.get_config()
         if config:
-            self._active_tab = config.get("active_tab", "all")
+            self._active_tab = config.get("active_tab", "media")
 
-        # 字体明细
+        # 获取数据
         fonts = self.get_data("fonts") or {}
+        media_subtitles = self.get_data("media_subtitles") or {}
+        stats = self.get_data("stats") or {}
 
-        if not fonts:
+        if not fonts and not media_subtitles:
             return [
                 {
                     "component": "div",
-                    "text": "暂无数据",
-                    "props": {
-                        "class": "text-center",
-                    },
+                    "text": "暂无数据，请先运行一次任务扫描字幕文件",
+                    "props": {"class": "text-center pa-4"},
                 }
             ]
-
-        # 分类数据
-        all_fonts = list(fonts.values())
-        downloaded_fonts = [f for f in all_fonts if f.get("actions") == "已下载"]
-        downloading_fonts = [f for f in all_fonts if f.get("actions") == "下载中"]
-        missing_fonts = [f for f in all_fonts if f.get("actions") == "缺失"]
-
-        # 根据当前Tab选择显示的数据
-        if self._active_tab == "downloaded":
-            display_fonts = downloaded_fonts
-        elif self._active_tab == "downloading":
-            display_fonts = downloading_fonts
-        elif self._active_tab == "missing":
-            display_fonts = missing_fonts
-        else:
-            display_fonts = all_fonts
-
-        # 排序：下载中的按进度降序排列
-        status_order = {"缺失": 0, "下载中": 1, "已下载": 2}
-        display_fonts = sorted(
-            display_fonts,
-            key=lambda x: (
-                status_order.get(x.get("actions", ""), 3),
-                -(x.get("progress", 0) if x.get("actions") == "下载中" else 0),
-            ),
-        )
-
-        # 统计数量
-        downloaded_count = len(downloaded_fonts)
-        downloading_count = len(downloading_fonts)
-        missing_count = len(missing_fonts)
 
         # 构建Tab项
         def build_tab_item(tab_id: str, label: str, count: int, icon: str):
@@ -601,96 +1003,30 @@ class SubtitlesFontCollection(_PluginBase):
                 },
             }
 
+        # 统计数量
+        downloaded_count = stats.get("downloaded_fonts", 0)
+        missing_count = stats.get("missing_fonts", 0)
+        total_media = stats.get("total_media", len(media_subtitles))
+
         # 获取当前激活Tab的索引
-        tab_ids = ["all", "downloaded", "downloading", "missing"]
+        tab_ids = ["media", "fonts", "downloaded", "missing"]
         current_index = (
             tab_ids.index(self._active_tab) if self._active_tab in tab_ids else 0
         )
 
-        # 构建表格行
-        table_rows = []
-        for data in display_fonts:
-            status = data.get("actions")
-            font_name = data.get("font_name")
-            file_name = data.get("file_name")
+        # 根据当前Tab构建内容
+        if self._active_tab == "media":
+            content = self.__build_media_view(media_subtitles, fonts)
+        elif self._active_tab == "fonts":
+            content = self.__build_font_view(fonts, status_filter=None)
+        elif self._active_tab == "downloaded":
+            content = self.__build_font_view(fonts, status_filter="downloaded")
+        elif self._active_tab == "missing":
+            content = self.__build_font_view(fonts, status_filter="missing")
+        else:
+            content = self.__build_media_view(media_subtitles, fonts)
 
-            # 状态显示内容
-            if status == "下载中":
-                progress = data.get("progress", 0)
-                status_cell = {
-                    "component": "td",
-                    "props": {"style": "width: 200px; padding: 12px;"},
-                    "content": [
-                        {
-                            "component": "VProgressLinear",
-                            "props": {
-                                "model-value": progress,
-                                "color": "info",
-                                "height": "20",
-                            },
-                            "content": [
-                                {"component": "strong", "text": f"{progress}%"}
-                            ],
-                        }
-                    ],
-                }
-            elif status == "已下载":
-                status_cell = {
-                    "component": "td",
-                    "props": {"style": "padding: 12px;"},
-                    "content": [
-                        {
-                            "component": "VChip",
-                            "props": {"color": "success", "size": "small"},
-                            "text": status,
-                        }
-                    ],
-                }
-            else:  # 缺失
-                status_cell = {
-                    "component": "td",
-                    "props": {"style": "padding: 12px;"},
-                    "content": [
-                        {
-                            "component": "VChip",
-                            "props": {"color": "warning", "size": "small"},
-                            "text": status,
-                        }
-                    ],
-                }
-
-            # 创建表格行
-            table_row = {
-                "component": "tr",
-                "content": [
-                    {
-                        "component": "td",
-                        "props": {"style": "padding: 12px;"},
-                        "content": [
-                            {
-                                "component": "div",
-                                "props": {"class": "text-subtitle-2"},
-                                "text": font_name,
-                            }
-                        ],
-                    },
-                    status_cell,
-                    {
-                        "component": "td",
-                        "props": {"style": "padding: 12px;"},
-                        "content": [
-                            {
-                                "component": "div",
-                                "props": {"class": "text-body-2"},
-                                "text": file_name,
-                            }
-                        ],
-                    },
-                ],
-            }
-            table_rows.append(table_row)
-
-        # 拼装页面 - 使用Tab切换显示
+        # 拼装页面
         return [
             {
                 "component": "VRow",
@@ -712,19 +1048,16 @@ class SubtitlesFontCollection(_PluginBase):
                                         },
                                         "content": [
                                             build_tab_item(
-                                                "all", "全部", len(all_fonts), "📊"
+                                                "media", "媒体视图", total_media, "🎬"
+                                            ),
+                                            build_tab_item(
+                                                "fonts", "全部字体", len(fonts), "📊"
                                             ),
                                             build_tab_item(
                                                 "downloaded",
                                                 "已下载",
                                                 downloaded_count,
                                                 "✅",
-                                            ),
-                                            build_tab_item(
-                                                "downloading",
-                                                "下载中",
-                                                downloading_count,
-                                                "⬇️",
                                             ),
                                             build_tab_item(
                                                 "missing", "缺失", missing_count, "❌"
@@ -734,74 +1067,10 @@ class SubtitlesFontCollection(_PluginBase):
                                     {"component": "VDivider"},
                                     {
                                         "component": "VCardText",
-                                        "content": [
-                                            {
-                                                "component": "VTable",
-                                                "props": {
-                                                    "hover": True,
-                                                    "fixed-header": True,
-                                                    "height": "30rem",
-                                                },
-                                                "content": [
-                                                    {
-                                                        "component": "thead",
-                                                        "content": [
-                                                            {
-                                                                "component": "tr",
-                                                                "content": [
-                                                                    {
-                                                                        "component": "th",
-                                                                        "props": {
-                                                                            "class": "text-left",
-                                                                            "style": "width: 35%;",
-                                                                        },
-                                                                        "text": "字体名称",
-                                                                    },
-                                                                    {
-                                                                        "component": "th",
-                                                                        "props": {
-                                                                            "class": "text-left",
-                                                                            "style": "width: 25%;",
-                                                                        },
-                                                                        "text": "状态",
-                                                                    },
-                                                                    {
-                                                                        "component": "th",
-                                                                        "props": {
-                                                                            "class": "text-left",
-                                                                            "style": "width: 40%;",
-                                                                        },
-                                                                        "text": "文件名",
-                                                                    },
-                                                                ],
-                                                            }
-                                                        ],
-                                                    },
-                                                    {
-                                                        "component": "tbody",
-                                                        "content": (
-                                                            table_rows
-                                                            if table_rows
-                                                            else [
-                                                                {
-                                                                    "component": "tr",
-                                                                    "content": [
-                                                                        {
-                                                                            "component": "td",
-                                                                            "props": {
-                                                                                "colspan": 3,
-                                                                                "class": "text-center pa-4",
-                                                                            },
-                                                                            "text": "暂无数据",
-                                                                        }
-                                                                    ],
-                                                                }
-                                                            ]
-                                                        ),
-                                                    },
-                                                ],
-                                            }
-                                        ],
+                                        "props": {
+                                            "style": "max-height: 35rem; overflow-y: auto;"
+                                        },
+                                        "content": content,
                                     },
                                 ],
                             }
@@ -811,17 +1080,1088 @@ class SubtitlesFontCollection(_PluginBase):
             }
         ]
 
+    def __build_media_view(self, media_subtitles: dict, fonts: dict) -> List[dict]:
+        """
+        构建媒体视图：按媒体-字幕-字体层级展示
+        """
+        if not media_subtitles:
+            return [
+                {
+                    "component": "div",
+                    "text": "暂无媒体数据",
+                    "props": {"class": "text-center pa-4"},
+                }
+            ]
+
+        content = []
+        for media_path, media_data in media_subtitles.items():
+            media_name = media_data.get("media_name", "未知媒体")
+            media_type = media_data.get("media_type", "movie")
+            year = media_data.get("year", "")
+
+            # 媒体类型图标
+            type_icon = "🎬" if media_type == "movie" else "📺"
+            media_title = f"{type_icon} {media_name}" + (f" ({year})" if year else "")
+
+            # 构建媒体卡片
+            media_card_content = []
+
+            if media_type == "movie":
+                # 电影：直接显示字幕列表
+                subtitles = media_data.get("subtitles", {})
+                subtitle_items = self.__build_subtitle_items(subtitles, fonts)
+                media_card_content.extend(subtitle_items)
+            else:
+                # 电视剧：显示季-集-字幕层级
+                seasons = media_data.get("seasons", {})
+                for season_key, season_data in sorted(seasons.items()):
+                    season_name = season_data.get("season_name", season_key)
+                    episodes = season_data.get("episodes", {})
+
+                    # 季标题
+                    season_header = {
+                        "component": "div",
+                        "props": {
+                            "class": "text-subtitle-1 font-weight-bold mt-2 mb-1"
+                        },
+                        "text": f"📁 {season_name}",
+                    }
+                    media_card_content.append(season_header)
+
+                    # 集列表
+                    for ep_key, ep_data in sorted(episodes.items()):
+                        ep_name = ep_data.get("episode_name", ep_key)
+                        subtitles = ep_data.get("subtitles", {})
+
+                        # 集标题
+                        ep_header = {
+                            "component": "div",
+                            "props": {"class": "text-body-2 ml-4 mt-1"},
+                            "text": f"🎞️ {ep_key}: {ep_name}",
+                        }
+                        media_card_content.append(ep_header)
+
+                        # 字幕列表
+                        subtitle_items = self.__build_subtitle_items(
+                            subtitles, fonts, indent=True
+                        )
+                        media_card_content.extend(subtitle_items)
+
+            # 媒体展开面板
+            media_panel = {
+                "component": "VExpansionPanels",
+                "props": {"class": "mb-2"},
+                "content": [
+                    {
+                        "component": "VExpansionPanel",
+                        "content": [
+                            {
+                                "component": "VExpansionPanelTitle",
+                                "props": {"class": "text-subtitle-1 font-weight-bold"},
+                                "text": media_title,
+                            },
+                            {
+                                "component": "VExpansionPanelText",
+                                "content": (
+                                    media_card_content
+                                    if media_card_content
+                                    else [
+                                        {
+                                            "component": "div",
+                                            "text": "暂无字幕",
+                                            "props": {"class": "text-center"},
+                                        }
+                                    ]
+                                ),
+                            },
+                        ],
+                    }
+                ],
+            }
+            content.append(media_panel)
+
+        return content
+
+    def __build_subtitle_items(
+        self, subtitles: dict, fonts: dict, indent: bool = False
+    ) -> List[dict]:
+        """
+        构建字幕条目列表
+        """
+        items = []
+        indent_class = "ml-8" if indent else "ml-4"
+
+        for sub_name, sub_data in subtitles.items():
+            font_ids = sub_data.get("fonts", [])
+
+            # 统计该字幕的字体状态
+            downloaded = 0
+            missing = 0
+            font_chips = []
+
+            for font_id in font_ids:
+                font_info = fonts.get(font_id, {})
+                status = font_info.get("status", "missing")
+                font_name = font_info.get("font_name", font_id)
+
+                if status == "downloaded":
+                    downloaded += 1
+                    color = "success"
+                else:
+                    missing += 1
+                    color = "warning"
+
+                font_chips.append(
+                    {
+                        "component": "VChip",
+                        "props": {
+                            "color": color,
+                            "size": "x-small",
+                            "class": "mr-1 mb-1",
+                        },
+                        "text": font_name,
+                    }
+                )
+
+            # 字幕状态摘要
+            status_text = f"✅{downloaded}" if downloaded else ""
+            status_text += f" ❌{missing}" if missing else ""
+
+            # 字幕条目
+            subtitle_item = {
+                "component": "div",
+                "props": {
+                    "class": f"{indent_class} my-2 pa-2",
+                    "style": "background: rgba(0,0,0,0.03); border-radius: 4px;",
+                },
+                "content": [
+                    {
+                        "component": "div",
+                        "props": {"class": "d-flex justify-space-between align-center"},
+                        "content": [
+                            {
+                                "component": "span",
+                                "props": {"class": "text-body-2"},
+                                "text": f"📄 {sub_name}",
+                            },
+                            {
+                                "component": "span",
+                                "props": {"class": "text-caption"},
+                                "text": status_text,
+                            },
+                        ],
+                    },
+                    {
+                        "component": "div",
+                        "props": {"class": "mt-1"},
+                        "content": font_chips,
+                    },
+                ],
+            }
+            items.append(subtitle_item)
+
+        return items
+
+    def __build_font_view(self, fonts: dict, status_filter: str = None) -> List[dict]:
+        """
+        构建字体视图：按字体状态展示
+        :param fonts: 字体数据
+        :param status_filter: 状态过滤（downloaded/missing），None表示全部
+        """
+        if not fonts:
+            return [
+                {
+                    "component": "div",
+                    "text": "暂无字体数据",
+                    "props": {"class": "text-center pa-4"},
+                }
+            ]
+
+        # 过滤和排序
+        font_list = list(fonts.items())
+        if status_filter:
+            font_list = [
+                (k, v) for k, v in font_list if v.get("status") == status_filter
+            ]
+
+        # 排序：缺失 > 已下载
+        status_order = {"missing": 0, "downloaded": 1}
+        font_list = sorted(
+            font_list,
+            key=lambda x: status_order.get(x[1].get("status", ""), 2),
+        )
+
+        if not font_list:
+            return [
+                {
+                    "component": "div",
+                    "text": "暂无匹配的字体",
+                    "props": {"class": "text-center pa-4"},
+                }
+            ]
+
+        # 构建表格
+        table_rows = []
+        for font_id, font_data in font_list:
+            status = font_data.get("status", "missing")
+            font_name = font_data.get("font_name", font_id)
+            file_name = font_data.get("file_name", "")
+            used_by = font_data.get("used_by", [])
+
+            # 状态单元格
+            status_text = self.__get_font_status_text(status)
+            status_color = self.__get_font_status_color(status)
+            status_cell = {
+                "component": "td",
+                "props": {"style": "padding: 12px;"},
+                "content": [
+                    {
+                        "component": "VChip",
+                        "props": {"color": status_color, "size": "small"},
+                        "text": status_text,
+                    }
+                ],
+            }
+
+            # 引用数量
+            used_count = len(used_by)
+
+            table_row = {
+                "component": "tr",
+                "content": [
+                    {
+                        "component": "td",
+                        "props": {"style": "padding: 12px;"},
+                        "content": [
+                            {
+                                "component": "div",
+                                "props": {"class": "text-subtitle-2"},
+                                "text": font_name,
+                            },
+                            {
+                                "component": "div",
+                                "props": {"class": "text-caption text-grey"},
+                                "text": font_id,
+                            },
+                        ],
+                    },
+                    status_cell,
+                    {
+                        "component": "td",
+                        "props": {"style": "padding: 12px;"},
+                        "text": file_name,
+                    },
+                    {
+                        "component": "td",
+                        "props": {"style": "padding: 12px; text-align: center;"},
+                        "content": [
+                            {
+                                "component": "VChip",
+                                "props": {
+                                    "size": "x-small",
+                                    "color": "primary",
+                                    "variant": "outlined",
+                                },
+                                "text": f"{used_count} 个字幕",
+                            }
+                        ],
+                    },
+                ],
+            }
+            table_rows.append(table_row)
+
+        return [
+            {
+                "component": "VTable",
+                "props": {"hover": True, "fixed-header": True, "height": "30rem"},
+                "content": [
+                    {
+                        "component": "thead",
+                        "content": [
+                            {
+                                "component": "tr",
+                                "content": [
+                                    {
+                                        "component": "th",
+                                        "props": {
+                                            "class": "text-left",
+                                            "style": "width: 30%;",
+                                        },
+                                        "text": "字体名称",
+                                    },
+                                    {
+                                        "component": "th",
+                                        "props": {
+                                            "class": "text-left",
+                                            "style": "width: 20%;",
+                                        },
+                                        "text": "状态",
+                                    },
+                                    {
+                                        "component": "th",
+                                        "props": {
+                                            "class": "text-left",
+                                            "style": "width: 30%;",
+                                        },
+                                        "text": "文件名",
+                                    },
+                                    {
+                                        "component": "th",
+                                        "props": {
+                                            "class": "text-center",
+                                            "style": "width: 20%;",
+                                        },
+                                        "text": "引用",
+                                    },
+                                ],
+                            }
+                        ],
+                    },
+                    {"component": "tbody", "content": table_rows},
+                ],
+            }
+        ]
+
     def __subtitlesfontcollection(self):
         """
         字幕字体补全任务
         """
-        logger.info("字幕字体补全任务开始执行")
-        # self.__add_debug_data()
-        self.__update_all_fonts_status()
-        self.__send_font_notification(
-            "111", ["2220","2221"], "333", "测试", 10, ["444", "555"]
-        )  # 发送测试通知
+        logger.info("字幕字体补全任务执行开始")
+
+        if not self._font_path:
+            logger.warning("未配置字体文件存储位置，任务终止")
+            return
+        if not self._media_path:
+            logger.warning("未配置媒体文件路径，任务终止")
+            return
+
+        # 收集字幕文件并解析字体
+        logger.info("开始扫描字幕文件...")
+        media_subtitles = self.__collect_subtitles_file()
+
+        if not media_subtitles:
+            logger.info("未发现有效的字幕文件，任务终止")
+            return
+
+        # 统计扫描结果
+        total_subtitles = 0
+        for media in media_subtitles.values():
+            if media.get("media_type") == "movie":
+                total_subtitles += len(media.get("subtitles", {}))
+            else:
+                for season in media.get("seasons", {}).values():
+                    for episode in season.get("episodes", {}).values():
+                        total_subtitles += len(episode.get("subtitles", {}))
+
+        logger.info(
+            f"扫描完成：发现 {len(media_subtitles)} 个媒体，{total_subtitles} 个字幕文件"
+        )
+
+        # 根据字体库更新字体状态
+        logger.info("检查字体库中已有的字体...")
+        self.__update_fonts_status_from_library()
+
+        # 更新统计数据
+        stats = self.__update_all_fonts_status()
+
+        # 获取缺失字体列表
+        fonts_data = self.get_data("fonts") or {}
+        missing_fonts = [
+            k for k, f in fonts_data.items() if f.get("status") == "missing"
+        ]
+
+        # 如果启用了自动下载且有缺失字体，执行下载任务
+        download_success = []
+        download_fail = []
+        if self._auto_download and missing_fonts:
+            logger.info(f"开始下载缺失字体，共 {len(missing_fonts)} 个...")
+            download_success, download_fail = self.__download_missing_fonts(missing_fonts)
+
+            # 下载完成后再次刷新字体状态
+            logger.info("下载完成，重新检查字体库...")
+            self.__update_fonts_status_from_library()
+
+            # 更新统计数据
+            stats = self.__update_all_fonts_status()
+
+        # 发送通知
+        if self._notify:
+            # 重新获取最新的字体数据
+            fonts_data = self.get_data("fonts") or {}
+            missing_fonts_after = [
+                f.get("font_name", k)
+                for k, f in fonts_data.items()
+                if f.get("status") == "missing"
+            ]
+
+            # 构建通知内容
+            text_parts = [
+                f"📊 扫描结果：",
+                f"• 媒体数量：{stats.get('total_media', 0)}",
+                f"• 字幕文件：{stats.get('total_subtitles', 0)}",
+                f"• 字体总数：{stats.get('total_fonts', 0)}",
+                f"• 已下载：{stats.get('downloaded_fonts', 0)}",
+                f"• 缺失：{stats.get('missing_fonts', 0)}",
+            ]
+
+            # 添加下载结果信息
+            if self._auto_download and (download_success or download_fail):
+                text_parts.append("")
+                text_parts.append(f"📥 下载结果：")
+                if download_success:
+                    text_parts.append(f"✅ 成功：{len(download_success)} 个")
+                if download_fail:
+                    text_parts.append(f"❌ 失败：{len(download_fail)} 个")
+                    # 显示部分失败字体名称
+                    fail_names = download_fail[:5]
+                    text_parts.append(f"   失败字体：{', '.join(fail_names)}")
+                    if len(download_fail) > 5:
+                        text_parts.append(f"   ... 等共 {len(download_fail)} 个")
+
+            # 添加仍缺失的字体信息
+            if missing_fonts_after:
+                text_parts.append("")
+                text_parts.append(f"⚠️ 仍缺失字体：{', '.join(missing_fonts_after[:10])}")
+                if len(missing_fonts_after) > 10:
+                    text_parts.append(f"... 等共 {len(missing_fonts_after)} 个")
+            else:
+                text_parts.append("")
+                text_parts.append("✅ 所有字体已下载完成！")
+
+            self.post_message(
+                mtype=NotificationType.Plugin,
+                title="字幕字体补全扫描完成",
+                text="\n".join(text_parts),
+            )
+
         logger.info("字幕字体补全任务执行完成")
+
+    def __download_missing_fonts(self, font_names: List[str]) -> Tuple[List[str], List[str]]:
+        """
+        下载缺失的字体
+        :param font_names: 缺失字体名称列表
+        :return: (成功列表, 失败列表)
+        """
+        if not font_names:
+            return [], []
+
+        if not self._font_path:
+            logger.warning("未配置字体存储路径，无法下载字体")
+            return [], font_names
+
+        success_fonts = []
+        fail_fonts = []
+
+        try:
+            # 初始化字体下载器
+            downloader = FontDownloader(use_caution=self._use_caution_fonts)
+            total = len(font_names)
+
+            # 逐个下载字体
+            logger.info(f"开始下载 {total} 个缺失字体到 {self._font_path}")
+            for idx, font_name in enumerate(font_names, 1):
+                # 检查任务是否被停止
+                if self._event.is_set():
+                    logger.info("字体下载任务被停止")
+                    # 将剩余未下载的字体添加到失败列表
+                    fail_fonts.extend(font_names[idx - 1:])
+                    break
+
+                logger.info(f"[{idx}/{total}] 正在下载字体：{font_name}")
+
+                # 下载单个字体
+                success, file_path = downloader.download_font(font_name, self._font_path)
+                if success:
+                    success_fonts.append(font_name)
+                    logger.info(f"[{idx}/{total}] 字体下载成功：{font_name} -> {file_path}")
+
+                    # 立即更新该字体的状态
+                    self.__update_font_record(
+                        font_id=font_name,
+                        status="downloaded",
+                        file_path=file_path,
+                    )
+                    # 更新统计数据
+                    self.__update_all_fonts_status()
+                else:
+                    fail_fonts.append(font_name)
+                    logger.warning(f"[{idx}/{total}] 字体下载失败：{font_name}")
+
+            logger.info(f"字体下载完成：成功 {len(success_fonts)} 个，失败 {len(fail_fonts)} 个")
+
+            if success_fonts:
+                logger.info(f"下载成功的字体：{', '.join(success_fonts)}")
+            if fail_fonts:
+                logger.warning(f"下载失败的字体：{', '.join(fail_fonts)}")
+
+            return success_fonts, fail_fonts
+
+        except FileNotFoundError as e:
+            logger.error(f"字体映射文件不存在：{e}")
+            return success_fonts, fail_fonts + [f for f in font_names if f not in success_fonts and f not in fail_fonts]
+        except Exception as e:
+            logger.error(f"下载字体时发生错误：{e}")
+            return success_fonts, fail_fonts + [f for f in font_names if f not in success_fonts and f not in fail_fonts]
+
+    def __parse_storage_type(self, path: str) -> Tuple[str, StorageSchema]:
+        """
+        解析路径中的存储类型
+        :param path: 路径字符串，可能包含#存储类型后缀
+        :return: (纯路径, 存储类型)
+        """
+        storage_type = StorageSchema.Local
+        clean_path = path.strip()
+
+        if "#" in clean_path:
+            parts = clean_path.split("#")
+            if len(parts) == 2:
+                clean_path = parts[0]
+                storage_type_str = parts[1].strip()
+                storage_map = {
+                    "Local": StorageSchema.Local,
+                    "Alipan": StorageSchema.Alipan,
+                    "115": StorageSchema.U115,
+                    "Rclone": StorageSchema.Rclone,
+                    "OpenList": StorageSchema.Alist,
+                }
+                storage_type = storage_map.get(storage_type_str, StorageSchema.Local)
+
+        return clean_path, storage_type
+
+    def __is_excluded_path(self, file_path: Path, exclude_paths: List[str]) -> bool:
+        """
+        检查路径是否在排除列表中
+        """
+        for exclude_path in exclude_paths:
+            if not exclude_path or not exclude_path.strip():
+                continue
+            try:
+                if file_path.is_relative_to(Path(exclude_path.strip())):
+                    return True
+            except Exception as err:
+                logger.debug(f"检查排除路径异常：{err}")
+        return False
+
+    def __parse_media_info(self, file_path: Path) -> Dict[str, Any]:
+        """
+        解析媒体信息，区分电影和电视剧
+        :param file_path: 字幕文件路径
+        :return: 媒体信息字典
+        """
+        import re
+
+        file_meta = MetaInfoPath(file_path)
+        media_name = file_meta.name or "未知名称"
+        year = file_meta.year or ""
+
+        # 尝试解析季集信息
+        season = None
+        episode = None
+        episode_name = ""
+
+        # 从路径或文件名中解析季集信息
+        path_str = str(file_path)
+
+        # 匹配 S01E01 格式
+        se_match = re.search(r"[Ss](\d{1,2})[Ee](\d{1,3})", path_str)
+        if se_match:
+            season = f"S{int(se_match.group(1)):02d}"
+            episode = f"E{int(se_match.group(2)):02d}"
+
+        # 如果没有匹配到，尝试匹配 Season X 格式
+        if not season:
+            season_match = re.search(r"[Ss]eason\s*(\d{1,2})", path_str, re.IGNORECASE)
+            if season_match:
+                season = f"S{int(season_match.group(1)):02d}"
+
+        # 尝试从路径结构中获取季信息
+        if not season:
+            for part in file_path.parts:
+                s_match = re.match(r"^[Ss](\d{1,2})$", part)
+                if s_match:
+                    season = f"S{int(s_match.group(1)):02d}"
+                    break
+
+        # 判断媒体类型
+        media_type = "tv" if season else "movie"
+
+        # 构建媒体路径（作为唯一标识）
+        if media_type == "tv":
+            # 电视剧：使用父目录的父目录（或更上层）作为媒体路径
+            # 假设结构：/tv/剧名/S01/xxx.ass 或 /tv/剧名/Season 1/xxx.ass
+            media_path = None
+            for i, part in enumerate(file_path.parts):
+                if re.match(r"^[Ss]\d{1,2}$", part) or re.match(
+                    r"^[Ss]eason\s*\d{1,2}$", part, re.IGNORECASE
+                ):
+                    media_path = str(Path(*file_path.parts[:i]))
+                    break
+            if not media_path:
+                # 尝试使用倒数第二个目录
+                media_path = (
+                    str(file_path.parent.parent)
+                    if len(file_path.parts) > 2
+                    else str(file_path.parent)
+                )
+        else:
+            # 电影：使用父目录作为媒体路径
+            media_path = str(file_path.parent)
+
+        return {
+            "media_path": media_path,
+            "media_name": media_name,
+            "media_type": media_type,
+            "year": str(year) if year else "",
+            "season": season,
+            "episode": episode,
+            "episode_name": episode_name,
+            "subtitle_name": file_path.name,
+            "subtitle_path": str(file_path),
+        }
+
+    def __decode_font_name(self, font_name: str) -> str:
+        """
+        解码字体名称
+        ASS/SSA 字幕中的字体名称可能使用 #XX 格式编码非 ASCII 字符
+        例如: #E6#96#B9#E6#AD#A3#E7#BB#BC#E8#89#BA_GBK -> 方正综艺_GBK
+        :param font_name: 原始字体名称
+        :return: 解码后的字体名称
+        """
+        import re
+
+        if not font_name:
+            return font_name
+
+        # 检查是否包含 #XX 格式的编码
+        if '#' not in font_name:
+            return font_name
+
+        try:
+            # 匹配 #XX 格式（XX为两位十六进制）
+            hex_pattern = re.compile(r'#([0-9A-Fa-f]{2})')
+
+            # 检查是否有足够的 #XX 模式
+            matches = hex_pattern.findall(font_name)
+            if not matches:
+                return font_name
+
+            # 将 #XX 替换为对应的字节
+            def replace_hex(match):
+                return chr(int(match.group(1), 16))
+
+            # 先尝试将 #XX 转换为字节序列
+            byte_list = []
+            remaining = font_name
+            result_parts = []
+
+            i = 0
+            while i < len(font_name):
+                if font_name[i] == '#' and i + 2 < len(font_name):
+                    hex_chars = font_name[i+1:i+3]
+                    if all(c in '0123456789ABCDEFabcdef' for c in hex_chars):
+                        byte_list.append(int(hex_chars, 16))
+                        i += 3
+                        continue
+
+                # 如果有累积的字节，先解码
+                if byte_list:
+                    try:
+                        decoded = bytes(byte_list).decode('utf-8')
+                        result_parts.append(decoded)
+                    except UnicodeDecodeError:
+                        try:
+                            decoded = bytes(byte_list).decode('gbk')
+                            result_parts.append(decoded)
+                        except UnicodeDecodeError:
+                            # 解码失败，保留原始格式
+                            for b in byte_list:
+                                result_parts.append(f'#{b:02X}')
+                    byte_list = []
+
+                result_parts.append(font_name[i])
+                i += 1
+
+            # 处理末尾的字节
+            if byte_list:
+                try:
+                    decoded = bytes(byte_list).decode('utf-8')
+                    result_parts.append(decoded)
+                except UnicodeDecodeError:
+                    try:
+                        decoded = bytes(byte_list).decode('gbk')
+                        result_parts.append(decoded)
+                    except UnicodeDecodeError:
+                        for b in byte_list:
+                            result_parts.append(f'#{b:02X}')
+
+            decoded_name = ''.join(result_parts)
+
+            if decoded_name != font_name:
+                logger.debug(f"字体名称解码：{font_name} -> {decoded_name}")
+
+            return decoded_name
+
+        except Exception as e:
+            logger.warning(f"字体名称解码失败 {font_name}: {e}")
+            return font_name
+
+    def __extract_fonts_from_subtitle(
+        self, subtitle_path: Path, storage_type: StorageSchema
+    ) -> List[str]:
+        """
+        从字幕文件中提取字体信息
+        :param subtitle_path: 字幕文件路径
+        :param storage_type: 存储类型
+        :return: 字体ID列表
+        """
+        import re
+
+        fonts = []
+        local_file_path = None
+        is_temp_file = False  # 标记是否为临时文件（需要清理）
+
+        try:
+            file_manager = FileManagerModule()
+            file_manager.init_module()
+
+            # 获取文件项
+            file_item = file_manager.get_file_item(storage_type.value, subtitle_path)
+            if not file_item:
+                logger.warning(f"无法获取字幕文件项：{subtitle_path}")
+                return fonts
+
+            logger.debug(f"读取字幕文件内容：{subtitle_path}（存储类型：{storage_type.value}）")
+
+            # 下载文件到本地（本地存储会直接返回原路径，远程存储会下载到临时目录）
+            local_file_path = file_manager.download_file(file_item)
+            if not local_file_path or not local_file_path.exists():
+                logger.warning(f"无法下载字幕文件：{subtitle_path}")
+                return fonts
+
+            # 判断是否为临时文件（非本地存储下载的文件需要清理）
+            # 本地存储返回的路径与原路径相同，无需清理
+            is_temp_file = storage_type != StorageSchema.Local and local_file_path != subtitle_path
+
+            # 读取文件内容，尝试多种编码
+            content = None
+            for encoding in ['utf-8', 'utf-8-sig', 'gbk', 'gb2312', 'gb18030', 'utf-16', 'utf-16-le', 'utf-16-be']:
+                try:
+                    with open(local_file_path, 'r', encoding=encoding) as f:
+                        content = f.read()
+                    logger.debug(f"字幕文件 {subtitle_path.name} 使用编码：{encoding}")
+                    break
+                except (UnicodeDecodeError, UnicodeError):
+                    continue
+
+            if not content:
+                logger.warning(f"无法读取字幕文件内容（编码识别失败）：{subtitle_path}")
+                return fonts
+
+            # 解析ASS/SSA字幕中的字体
+            # 1. Style行格式: Style: Name,Fontname,Fontsize,...
+            #    格式: Style: stylename,fontname,fontsize,primarycolor,...
+            style_pattern = re.compile(r'^Style:\s*[^,]*,\s*([^,]+)', re.MULTILINE)
+            style_matches = style_pattern.findall(content)
+            for font in style_matches:
+                font = font.strip()
+                # 解码字体名称（处理 #XX 格式编码）
+                font = self.__decode_font_name(font)
+                # 过滤掉明显不是字体名的内容
+                if font and font not in fonts and not font.isdigit():
+                    fonts.append(font)
+                    logger.debug(f"从Style行发现字体：{font}")
+
+            # 2. 解析内联字体标签 {\fnFontName}
+            inline_pattern = re.compile(r'\\fn([^\\}]+)')
+            inline_matches = inline_pattern.findall(content)
+            for font in inline_matches:
+                font = font.strip()
+                # 解码字体名称
+                font = self.__decode_font_name(font)
+                if font and font not in fonts and not font.isdigit():
+                    fonts.append(font)
+                    logger.debug(f"从内联标签发现字体：{font}")
+
+            # 3. 解析 [Fonts] 段落中嵌入的字体声明
+            #    格式: fontname: xxx
+            fontname_pattern = re.compile(r'^fontname:\s*(.+)$', re.MULTILINE | re.IGNORECASE)
+            fontname_matches = fontname_pattern.findall(content)
+            for font in fontname_matches:
+                font = font.strip()
+                # 解码字体名称
+                font = self.__decode_font_name(font)
+                if font and font not in fonts:
+                    fonts.append(font)
+                    logger.debug(f"从嵌入字体声明发现字体：{font}")
+
+            logger.info(f"字幕 {subtitle_path.name} 共发现 {len(fonts)} 个字体：{fonts}")
+
+        except Exception as e:
+            logger.error(f"解析字幕字体失败 {subtitle_path}: {e}")
+
+        finally:
+            # 清理临时文件
+            if is_temp_file and local_file_path and local_file_path.exists():
+                try:
+                    local_file_path.unlink()
+                    logger.debug(f"已清理临时文件：{local_file_path}")
+                except Exception as e:
+                    logger.warning(f"清理临时文件失败 {local_file_path}: {e}")
+
+        return fonts
+
+    def __collect_subtitles_file(self) -> Dict[str, Any]:
+        """
+        收集字幕文件并按新数据结构组织
+        :return: media_subtitles 数据结构
+        """
+        from datetime import datetime
+
+        exclude_paths = [
+            p.strip() for p in self._exclude_paths.split("\n") if p.strip()
+        ]
+        paths = [p.strip() for p in self._media_path.split("\n") if p.strip()]
+
+        # 媒体-字幕关系数据
+        media_subtitles = self.get_data("media_subtitles") or {}
+        # 字体全局数据
+        fonts_data = self.get_data("fonts") or {}
+
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        subtitle_extensions = settings.RMT_SUBEXT  # 字幕文件扩展名
+
+        for path in paths:
+            if not path:
+                continue
+
+            clean_path, storage_type = self.__parse_storage_type(path)
+
+            file_manager = FileManagerModule()
+            file_manager.init_module()
+
+            logger.debug(f"尝试从存储 [{storage_type}] 获取路径：{clean_path}")
+
+            try:
+                # 获取文件项
+                file_item = file_manager.get_file_item(
+                    storage_type.value, Path(clean_path)
+                )
+                if not file_item:
+                    logger.warning(f"存储 [{storage_type}] 中未找到路径：{clean_path}")
+                    continue
+
+                logger.debug(f"在存储 [{storage_type}] 中找到路径：{clean_path}")
+
+                # 列出所有文件
+                file_list = file_manager.list_files(file_item, recursion=True)
+                if not file_list:
+                    logger.debug(f"存储 [{storage_type}] 路径 {clean_path} 下无文件")
+                    continue
+
+                # 筛选字幕文件
+                for file in file_list:
+                    if self._event.is_set():
+                        logger.info("字幕字体补全服务停止")
+                        return media_subtitles
+
+                    # 检查是否是文件
+                    if file.type != "file":
+                        continue
+
+                    # 检查是否是字幕文件
+                    if (
+                        not file.extension
+                        or f".{file.extension.lower()}" not in subtitle_extensions
+                    ):
+                        continue
+
+                    if not file.path:
+                        continue
+
+                    file_path = Path(file.path)
+
+                    # 检查是否在排除路径中
+                    if self.__is_excluded_path(file_path, exclude_paths):
+                        logger.debug(f"{file_path} 在排除目录中，跳过...")
+                        continue
+
+                    # 解析媒体信息
+                    media_info = self.__parse_media_info(file_path)
+                    media_path = media_info["media_path"]
+                    media_name = media_info["media_name"]
+                    media_type = media_info["media_type"]
+                    year = media_info["year"]
+                    season = media_info["season"]
+                    episode = media_info["episode"]
+                    subtitle_name = media_info["subtitle_name"]
+                    subtitle_path = media_info["subtitle_path"]
+
+                    logger.debug(
+                        f"发现字幕文件：{subtitle_path} (媒体: {media_name}, 类型: {media_type})"
+                    )
+
+                    # 提取字幕中的字体
+                    font_ids = self.__extract_fonts_from_subtitle(
+                        file_path, storage_type
+                    )
+                    logger.debug(f"字幕 {subtitle_name} 使用字体: {font_ids}")
+
+                    # 更新字体全局数据
+                    for font_id in font_ids:
+                        if font_id not in fonts_data:
+                            fonts_data[font_id] = {
+                                "font_name": font_id,  # 初始使用ID作为名称
+                                "file_name": "",
+                                "status": "missing",
+                                "file_path": "",
+                                "used_by": [],
+                                "update_time": current_time,
+                            }
+                        # 添加引用
+                        if subtitle_path not in fonts_data[font_id]["used_by"]:
+                            fonts_data[font_id]["used_by"].append(subtitle_path)
+
+                    # 构建字幕数据
+                    subtitle_data = {
+                        "subtitle_path": subtitle_path,
+                        "fonts": font_ids,
+                        "scan_time": current_time,
+                    }
+
+                    # 根据媒体类型组织数据
+                    if media_path not in media_subtitles:
+                        media_subtitles[media_path] = {
+                            "media_name": media_name,
+                            "media_type": media_type,
+                            "year": year,
+                        }
+                        if media_type == "movie":
+                            media_subtitles[media_path]["subtitles"] = {}
+                        else:
+                            media_subtitles[media_path]["seasons"] = {}
+
+                    if media_type == "movie":
+                        # 电影：直接添加到 subtitles
+                        media_subtitles[media_path]["subtitles"][
+                            subtitle_name
+                        ] = subtitle_data
+                    else:
+                        # 电视剧：按季/集组织
+                        if "seasons" not in media_subtitles[media_path]:
+                            media_subtitles[media_path]["seasons"] = {}
+
+                        if season:
+                            if season not in media_subtitles[media_path]["seasons"]:
+                                media_subtitles[media_path]["seasons"][season] = {
+                                    "season_name": season.replace("S", "第") + "季",
+                                    "episodes": {},
+                                }
+
+                            if episode:
+                                if (
+                                    episode
+                                    not in media_subtitles[media_path]["seasons"][
+                                        season
+                                    ]["episodes"]
+                                ):
+                                    media_subtitles[media_path]["seasons"][season][
+                                        "episodes"
+                                    ][episode] = {"episode_name": "", "subtitles": {}}
+                                media_subtitles[media_path]["seasons"][season][
+                                    "episodes"
+                                ][episode]["subtitles"][subtitle_name] = subtitle_data
+                            else:
+                                # 有季但没有集信息，放到 E00
+                                if (
+                                    "E00"
+                                    not in media_subtitles[media_path]["seasons"][
+                                        season
+                                    ]["episodes"]
+                                ):
+                                    media_subtitles[media_path]["seasons"][season][
+                                        "episodes"
+                                    ]["E00"] = {"episode_name": "其他", "subtitles": {}}
+                                media_subtitles[media_path]["seasons"][season][
+                                    "episodes"
+                                ]["E00"]["subtitles"][subtitle_name] = subtitle_data
+                        else:
+                            # 没有季信息，放到 S00
+                            if "S00" not in media_subtitles[media_path]["seasons"]:
+                                media_subtitles[media_path]["seasons"]["S00"] = {
+                                    "season_name": "其他",
+                                    "episodes": {},
+                                }
+                            if (
+                                "E00"
+                                not in media_subtitles[media_path]["seasons"]["S00"][
+                                    "episodes"
+                                ]
+                            ):
+                                media_subtitles[media_path]["seasons"]["S00"][
+                                    "episodes"
+                                ]["E00"] = {"episode_name": "其他", "subtitles": {}}
+                            media_subtitles[media_path]["seasons"]["S00"]["episodes"][
+                                "E00"
+                            ]["subtitles"][subtitle_name] = subtitle_data
+
+            except Exception as e:
+                logger.error(f"从存储 [{storage_type}] 获取路径 {clean_path} 失败：{e}")
+                continue
+
+        # 保存数据
+        self.save_data("media_subtitles", media_subtitles)
+        self.save_data("fonts", fonts_data)
+
+        return media_subtitles
+
+    def __check_font_exists(self, font_id: str) -> bool:
+        """
+        检查字体是否已存在于字体库中
+        :param font_id: 字体ID
+        :return: 是否存在
+        """
+        if not self._font_path:
+            return False
+
+        font_path = Path(self._font_path)
+        if not font_path.exists():
+            return False
+
+        # 常见字体扩展名
+        font_extensions = [".ttf", ".ttc", ".otf", ".woff", ".woff2"]
+
+        # 检查字体文件是否存在
+        for ext in font_extensions:
+            # 尝试多种命名方式
+            possible_names = [
+                f"{font_id}{ext}",
+                f"{font_id.lower()}{ext}",
+                f"{font_id.replace(' ', '')}{ext}",
+                f"{font_id.replace(' ', '_')}{ext}",
+            ]
+            for name in possible_names:
+                if (font_path / name).exists():
+                    return True
+
+        return False
+
+    def __update_fonts_status_from_library(self):
+        """
+        根据字体库更新字体状态
+        """
+        from datetime import datetime
+
+        fonts_data = self.get_data("fonts") or {}
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        for font_id, font_info in fonts_data.items():
+            if font_info.get("status") != "downloaded":
+                if self.__check_font_exists(font_id):
+                    fonts_data[font_id]["status"] = "downloaded"
+                    fonts_data[font_id]["update_time"] = current_time
+                    logger.info(f"字体 {font_id} 已在字体库中找到，状态更新为已下载")
+
+        self.save_data("fonts", fonts_data)
 
     def get_service(self) -> List[Dict[str, Any]]:
         """
@@ -834,22 +2174,15 @@ class SubtitlesFontCollection(_PluginBase):
             "kwargs": {} # 定时器参数
         }]
         """
-        if self._enabled and self._cron:
+        # 默认每7天执行一次
+        cron = self._cron if self._cron else "0 0 */7 * *"
+
+        if self._enabled:
             return [
                 {
                     "id": "SubtitlesFontCollection",
                     "name": "字幕字体补全",
-                    "trigger": CronTrigger.from_crontab(self._cron),
-                    "func": self.__subtitlesfontcollection,
-                    "kwargs": {},
-                }
-            ]
-        elif self._enabled:
-            return [
-                {
-                    "id": "SubtitlesFontCollection",
-                    "name": "字幕字体补全",
-                    "trigger": CronTrigger.from_crontab("0 0 */7 * *"),
+                    "trigger": CronTrigger.from_crontab(cron),
                     "func": self.__subtitlesfontcollection,
                     "kwargs": {},
                 }
