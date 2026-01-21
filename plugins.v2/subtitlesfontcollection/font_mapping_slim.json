@@ -99,6 +99,762 @@
   "源ノ明朝 SemiBold": [
     "日文/Adobe/Source Han Serif SemiBold.otf"
   ],
+  "DFCraftYu-W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "ＤＦクラフト遊W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "DFPCraftYu-W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "ＤＦＰクラフト遊W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "DFGCraftYu-W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "ＤＦＧクラフト遊W5": [
+    "日文/DynaFont（华康）/DFCraftYu-W5 & DFPCraftYu-W5 & DFGCraftYu-W5.ttc"
+  ],
+  "DFFuun-W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "ＤＦ風雲体W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "DFPFuun-W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "ＤＦＰ風雲体W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "DFGFuun-W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "ＤＦＧ風雲体W12": [
+    "日文/DynaFont（华康）/DFFuun-W12 & DFPFuun-W12 & DFGFuun-W12.ttc"
+  ],
+  "DFGothic-EB": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "ＤＦ特太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "DFPGothic-EB": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "ＤＦＰ特太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "DFGGothic-EB": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "ＤＦＧ特太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-EB & DFPGothic-EB & DFGGothic-EB.ttc"
+  ],
+  "DFGothic-SU": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "ＤＦ超極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "DFPGothic-SU": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "ＤＦＰ超極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "DFGGothic-SU": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "ＤＦＧ超極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-SU & DFPGothic-SU & DFGGothic-SU.ttc"
+  ],
+  "DFGothic-UB": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "ＤＦ極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "DFPGothic-UB": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "ＤＦＰ極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "DFGGothic-UB": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "ＤＦＧ極太ゴシック体": [
+    "日文/DynaFont（华康）/DFGothic-UB & DFPGothic-UB & DFGGothic-UB.ttc"
+  ],
+  "DFGothicP-W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "ＤＦ華康ゴシック体W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "DFPGothicP-W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "ＤＦＰ華康ゴシック体W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "DFGGothicP-W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "ＤＦＧ華康ゴシック体W2": [
+    "日文/DynaFont（华康）/DFGothicP-W2 & DFPGothicP-W2 & DFGGothicP-W2.ttc"
+  ],
+  "DFGothicP-W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "ＤＦ華康ゴシック体W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "DFPGothicP-W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "ＤＦＰ華康ゴシック体W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "DFGGothicP-W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "ＤＦＧ華康ゴシック体W3": [
+    "日文/DynaFont（华康）/DFGothicP-W3 & DFPGothicP-W3 & DFGGothicP-W3.ttc"
+  ],
+  "DFGothicP-W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "ＤＦ華康ゴシック体W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "DFPGothicP-W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "ＤＦＰ華康ゴシック体W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "DFGGothicP-W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "ＤＦＧ華康ゴシック体W5": [
+    "日文/DynaFont（华康）/DFGothicP-W5 & DFPGothicP-W5 & DFGGothicP-W5.ttc"
+  ],
+  "DFHannotate-W5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "ＤＦハンノテートW5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "DFPHannotate-W5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "ＤＦＰハンノテートW5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "DFGHannotate-W5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "ＤＦＧハンノテートW5": [
+    "日文/DynaFont（华康）/DFHannotate-W5 & DFPHannotate-W5 & DFGHannotate-W5.ttc"
+  ],
+  "DFHannotate-W7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "ＤＦハンノテートW7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "DFPHannotate-W7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "ＤＦＰハンノテートW7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "DFGHannotate-W7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "ＤＦＧハンノテートW7": [
+    "日文/DynaFont（华康）/DFHannotate-W7 & DFPHannotate-W7 & DFGHannotate-W7.ttc"
+  ],
+  "DFHanziPen-W3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "ＤＦハンジペンW3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "DFPHanziPen-W3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "ＤＦＰハンジペンW3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "DFGHanziPen-W3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "ＤＦＧハンジペンW3": [
+    "日文/DynaFont（华康）/DFHanziPen-W3 & DFPHanziPen-W3 & DFGHanziPen-W3.ttc"
+  ],
+  "DFHanziPen-W5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "ＤＦハンジペンW5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "DFPHanziPen-W5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "ＤＦＰハンジペンW5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "DFGHanziPen-W5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "ＤＦＧハンジペンW5": [
+    "日文/DynaFont（华康）/DFHanziPen-W5 & DFPHanziPen-W5 & DFGHanziPen-W5.ttc"
+  ],
+  "DFHSGothic-W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "ＤＦ平成ゴシック体W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "DFPHSGothic-W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "ＤＦＰ平成ゴシック体W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "DFGHSGothic-W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "ＤＦＧ平成ゴシック体W3": [
+    "日文/DynaFont（华康）/DFHSGothic-W3 & DFPHSGothic-W3 & DFGHSGothic-W3.ttc"
+  ],
+  "DFHSGothic-W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "ＤＦ平成ゴシック体W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "DFPHSGothic-W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "ＤＦＰ平成ゴシック体W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "DFGHSGothic-W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "ＤＦＧ平成ゴシック体W5": [
+    "日文/DynaFont（华康）/DFHSGothic-W5 & DFPHSGothic-W5 & DFGHSGothic-W5.ttc"
+  ],
+  "DFHSGothic-W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "ＤＦ平成ゴシック体W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "DFPHSGothic-W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "ＤＦＰ平成ゴシック体W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "DFGHSGothic-W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "ＤＦＧ平成ゴシック体W7": [
+    "日文/DynaFont（华康）/DFHSGothic-W7 & DFPHSGothic-W7 & DFGHSGothic-W7.ttc"
+  ],
+  "DFHSGothic-W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "ＤＦ平成ゴシック体W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "DFPHSGothic-W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "ＤＦＰ平成ゴシック体W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "DFGHSGothic-W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "ＤＦＧ平成ゴシック体W9": [
+    "日文/DynaFont（华康）/DFHSGothic-W9 & DFPHSGothic-W9 & DFGHSGothic-W9.ttc"
+  ],
+  "DFHSMaruGothic-W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "ＤＦ平成丸ゴシック体W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "DFPHSMaruGothic-W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "ＤＦＰ平成丸ゴシック体W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "DFGHSMaruGothic-W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "ＤＦＧ平成丸ゴシック体W4": [
+    "日文/DynaFont（华康）/DFHSMaruGothic-W4 & DFPHSMaruGothic-W4 & DFGHSMaruGothic-W4.ttc"
+  ],
+  "DFHSMincho-W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "ＤＦ平成明朝体W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "DFPHSMincho-W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "ＤＦＰ平成明朝体W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "DFGHSMincho-W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "ＤＦＧ平成明朝体W3": [
+    "日文/DynaFont（华康）/DFHSMincho-W3 & DFPHSMincho-W3 & DFGHSMincho-W3.ttc"
+  ],
+  "DFHSMincho-W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "ＤＦ平成明朝体W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "DFPHSMincho-W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "ＤＦＰ平成明朝体W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "DFGHSMincho-W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "ＤＦＧ平成明朝体W5": [
+    "日文/DynaFont（华康）/DFHSMincho-W5 & DFPHSMincho-W5 & DFGHSMincho-W5.ttc"
+  ],
+  "DFHSMincho-W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "ＤＦ平成明朝体W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "DFPHSMincho-W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "ＤＦＰ平成明朝体W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "DFGHSMincho-W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "ＤＦＧ平成明朝体W7": [
+    "日文/DynaFont（华康）/DFHSMincho-W7 & DFPHSMincho-W7 & DFGHSMincho-W7.ttc"
+  ],
+  "DFHSMincho-W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "ＤＦ平成明朝体W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "DFPHSMincho-W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "ＤＦＰ平成明朝体W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "DFGHSMincho-W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "ＤＦＧ平成明朝体W9": [
+    "日文/DynaFont（华康）/DFHSMincho-W9 & DFPHSMincho-W9 & DFGHSMincho-W9.ttc"
+  ],
+  "DFKanTeiRyu-XB": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "ＤＦ勘亭流": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "DFPKanTeiRyu-XB": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "ＤＦＰ勘亭流": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "DFGKanTeiRyu-XB": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "ＤＦＧ勘亭流": [
+    "日文/DynaFont（华康）/DFKanTeiRyu-XB & DFPKanTeiRyu-XB & DFGKanTeiRyu-XB.ttc"
+  ],
+  "DFKinBun-W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "ＤＦ金文体W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "DFPKinBun-W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "ＤＦＰ金文体W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "DFGKinBun-W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "ＤＦＧ金文体W3": [
+    "日文/DynaFont（华康）/DFKinBun-W3 & DFPKinBun-W3 & DFGKinBun-W3.ttc"
+  ],
+  "DFMaruGothic-Bd": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "ＤＦ中太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "DFPMaruGothic-Bd": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "ＤＦＰ中太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "DFGMaruGothic-Bd": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "ＤＦＧ中太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Bd & DFPMaruGothic-Bd & DFGMaruGothic-Bd.ttc"
+  ],
+  "DFMaruGothic-Lt": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "ＤＦ細丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "DFPMaruGothic-Lt": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "ＤＦＰ細丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "DFGMaruGothic-Lt": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "ＤＦＧ細丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Lt & DFPMaruGothic-Lt & DFGMaruGothic-Lt.ttc"
+  ],
+  "DFMaruGothic-Md": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "ＤＦ中丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "DFPMaruGothic-Md": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "ＤＦＰ中丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "DFGMaruGothic-Md": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "ＤＦＧ中丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-Md & DFPMaruGothic-Md & DFGMaruGothic-Md.ttc"
+  ],
+  "DFMaruGothic-SB": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "ＤＦ太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "DFPMaruGothic-SB": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "ＤＦＰ太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "DFGMaruGothic-SB": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "ＤＦＧ太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SB & DFPMaruGothic-SB & DFGMaruGothic-SB.ttc"
+  ],
+  "DFMaruGothic-SU": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "ＤＦ超極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "DFPMaruGothic-SU": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "ＤＦＰ超極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "DFGMaruGothic-SU": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "ＤＦＧ超極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-SU & DFPMaruGothic-SU & DFGMaruGothic-SU.ttc"
+  ],
+  "DFMaruGothic-UB": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "ＤＦ極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "DFPMaruGothic-UB": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "ＤＦＰ極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "DFGMaruGothic-UB": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "ＤＦＧ極太丸ゴシック体": [
+    "日文/DynaFont（华康）/DFMaruGothic-UB & DFPMaruGothic-UB & DFGMaruGothic-UB.ttc"
+  ],
+  "DFMaruMoji-SL": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "ＤＦまるもじ体": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "DFPMaruMoji-SL": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "ＤＦＰまるもじ体": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "DFGMaruMoji-SL": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "ＤＦＧまるもじ体": [
+    "日文/DynaFont（华康）/DFMaruMoji-SL & DFPMaruMoji-SL & DFGMaruMoji-SL.ttc"
+  ],
+  "DFMaruMoji-W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "ＤＦまるもじ体W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "DFPMaruMoji-W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "ＤＦＰまるもじ体W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "DFGMaruMoji-W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "ＤＦＧまるもじ体W3": [
+    "日文/DynaFont（华康）/DFMaruMoji-W3 & DFPMaruMoji-W3 & DFGMaruMoji-W3.ttc"
+  ],
+  "DFMaruMojiRD-W7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "ＤＦまるもじＲＤW7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "DFPMaruMojiRD-W7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "ＤＦＰまるもじＲＤW7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "DFGMaruMojiRD-W7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "ＤＦＧまるもじＲＤW7": [
+    "日文/DynaFont（华康）/DFMaruMojiRD-W7 & DFPMaruMojiRD-W7 & DFGMaruMojiRD-W7.ttc"
+  ],
+  "DFMincho-SU": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "ＤＦ超極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "DFPMincho-SU": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "ＤＦＰ超極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "DFGMincho-SU": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "ＤＦＧ超極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-SU & DFPMincho-SU & DFGMincho-SU.ttc"
+  ],
+  "DFMincho-UB": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "ＤＦ極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "DFPMincho-UB": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "ＤＦＰ極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "DFGMincho-UB": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "ＤＦＧ極太明朝体": [
+    "日文/DynaFont（华康）/DFMincho-UB & DFPMincho-UB & DFGMincho-UB.ttc"
+  ],
+  "DFMinchoP-W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "ＤＦ華康明朝体W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "DFPMinchoP-W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "ＤＦＰ華康明朝体W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "DFGMinchoP-W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "ＤＦＧ華康明朝体W3": [
+    "日文/DynaFont（华康）/DFMinchoP-W3 & DFPMinchoP-W3 & DFGMinchoP-W3.ttc"
+  ],
+  "DFMinchoP-W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "ＤＦ華康明朝体W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "DFPMinchoP-W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "ＤＦＰ華康明朝体W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "DFGMinchoP-W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "ＤＦＧ華康明朝体W5": [
+    "日文/DynaFont（华康）/DFMinchoP-W5 & DFPMinchoP-W5 & DFGMinchoP-W5.ttc"
+  ],
+  "DFPOP1-W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "ＤＦPOP1体W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "DFPPOP1-W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "ＤＦＰPOP1体W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "DFGPOP1-W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "ＤＦＧPOP1体W9": [
+    "日文/DynaFont（华康）/DFPOP1-W9 & DFPPOP1-W9 & DFGPOP1-W9.ttc"
+  ],
+  "DFPOPCorn-W12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "ＤＦPOPコンW12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "DFPPOPCorn-W12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "ＤＦＰPOPコンW12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "DFGPOPCorn-W12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "ＤＦＧPOPコンW12": [
+    "日文/DynaFont（华康）/DFPOPCorn-W12 & DFPPOPCorn-W12 & DFGPOPCorn-W12.ttc"
+  ],
+  "DFPOPMix-W5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "ＤＦPOPミックスW5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "DFPPOPMix-W5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "ＤＦＰPOPミックスW5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "DFGPOPMix-W5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "ＤＦＧPOPミックスW5": [
+    "日文/DynaFont（华康）/DFPOPMix-W5 & DFPPOPMix-W5 & DFGPOPMix-W5.ttc"
+  ],
+  "DFSoGei-W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "ＤＦ綜藝体W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "DFPSoGei-W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "ＤＦＰ綜藝体W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "DFGSoGei-W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "ＤＦＧ綜藝体W7": [
+    "日文/DynaFont（华康）/DFSoGei-W7 & DFPSoGei-W7 & DFGSoGei-W7.ttc"
+  ],
+  "DFTegakiKaku-W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "ＤＦてがき角W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "DFPTegakiKaku-W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "ＤＦＰてがき角W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "DFGTegakiKaku-W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "ＤＦＧてがき角W4": [
+    "日文/DynaFont（华康）/DFTegakiKaku-W4 & DFPTegakiKaku-W4 & DFGTegakiKaku-W4.ttc"
+  ],
+  "DFTegakiRaku-W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
+  "ＤＦてがき楽W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
+  "DFPTegakiRaku-W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
+  "ＤＦＰてがき楽W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
+  "DFGTegakiRaku-W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
+  "ＤＦＧてがき楽W3": [
+    "日文/DynaFont（华康）/DFTegakiRaku-W3 & DFPTegakiRaku-W3 & DFGTegakiRaku-W3.ttc"
+  ],
   "EPSON ä€ÉSÉVÉbÉNëÃÇl": [
     "日文/EPSON（爱普生）/EPSON 丸ゴシック体Ｍ.ttf"
   ],
@@ -2184,6 +2940,234 @@
   "TakeStd-Medium": [
     "日文/Morisawa（森泽）/A-OTF Take Std M.otf"
   ],
+  "DFPOP1W5-GB": [
+    "简体/DynaFont（华康）/华康POP1体W5 & 华康POP1体W5(P).ttc"
+  ],
+  "华康POP1体W5": [
+    "简体/DynaFont（华康）/华康POP1体W5 & 华康POP1体W5(P).ttc"
+  ],
+  "DFPPOP1W5-GB": [
+    "简体/DynaFont（华康）/华康POP1体W5 & 华康POP1体W5(P).ttc"
+  ],
+  "华康POP1体W5(P)": [
+    "简体/DynaFont（华康）/华康POP1体W5 & 华康POP1体W5(P).ttc"
+  ],
+  "DFPOP3W12-GB": [
+    "简体/DynaFont（华康）/华康POP3体W12 & 华康POP3体W12(P).ttc"
+  ],
+  "华康POP3体W12": [
+    "简体/DynaFont（华康）/华康POP3体W12 & 华康POP3体W12(P).ttc"
+  ],
+  "DFPPOP3W12-GB": [
+    "简体/DynaFont（华康）/华康POP3体W12 & 华康POP3体W12(P).ttc"
+  ],
+  "华康POP3体W12(P)": [
+    "简体/DynaFont（华康）/华康POP3体W12 & 华康POP3体W12(P).ttc"
+  ],
+  "DFLiJinHeiW8-GB": [
+    "简体/DynaFont（华康）/华康俪金黑W8 & 华康俪金黑W8(P).ttc"
+  ],
+  "华康俪金黑W8": [
+    "简体/DynaFont（华康）/华康俪金黑W8 & 华康俪金黑W8(P).ttc"
+  ],
+  "DFPLiJinHeiW8-GB": [
+    "简体/DynaFont（华康）/华康俪金黑W8 & 华康俪金黑W8(P).ttc"
+  ],
+  "华康俪金黑W8(P)": [
+    "简体/DynaFont（华康）/华康俪金黑W8 & 华康俪金黑W8(P).ttc"
+  ],
+  "DFKanTingLiuW9-GB": [
+    "简体/DynaFont（华康）/华康勘亭流W9 & 华康勘亭流W9(P).ttc"
+  ],
+  "华康勘亭流W9": [
+    "简体/DynaFont（华康）/华康勘亭流W9 & 华康勘亭流W9(P).ttc"
+  ],
+  "DFPKanTingLiuW9-GB": [
+    "简体/DynaFont（华康）/华康勘亭流W9 & 华康勘亭流W9(P).ttc"
+  ],
+  "华康勘亭流W9(P)": [
+    "简体/DynaFont（华康）/华康勘亭流W9 & 华康勘亭流W9(P).ttc"
+  ],
+  "DFHuaZongW5-GB": [
+    "简体/DynaFont（华康）/华康华综体W5 & 华康华综体W5P.ttc"
+  ],
+  "华康华综体W5": [
+    "简体/DynaFont（华康）/华康华综体W5 & 华康华综体W5P.ttc"
+  ],
+  "DFPHuaZongW5-GB": [
+    "简体/DynaFont（华康）/华康华综体W5 & 华康华综体W5P.ttc"
+  ],
+  "华康华综体W5P": [
+    "简体/DynaFont（华康）/华康华综体W5 & 华康华综体W5P.ttc"
+  ],
+  "DFRareBook-Ginkgo SC2 W3": [
+    "简体/DynaFont（华康）/华康古籍银杏W3 & 华康古籍银杏W3P.ttc"
+  ],
+  "华康古籍银杏W3": [
+    "简体/DynaFont（华康）/华康古籍银杏W3 & 华康古籍银杏W3P.ttc"
+  ],
+  "DFPRareBook-Ginkgo SC2 W3": [
+    "简体/DynaFont（华康）/华康古籍银杏W3 & 华康古籍银杏W3P.ttc"
+  ],
+  "华康古籍银杏W3P": [
+    "简体/DynaFont（华康）/华康古籍银杏W3 & 华康古籍银杏W3P.ttc"
+  ],
+  "DFWaWaW5-GB": [
+    "简体/DynaFont（华康）/华康娃娃体W5 & 华康娃娃体W5(P).ttc"
+  ],
+  "华康娃娃体W5": [
+    "简体/DynaFont（华康）/华康娃娃体W5 & 华康娃娃体W5(P).ttc"
+  ],
+  "DFPWaWaW5-GB": [
+    "简体/DynaFont（华康）/华康娃娃体W5 & 华康娃娃体W5(P).ttc"
+  ],
+  "华康娃娃体W5(P)": [
+    "简体/DynaFont（华康）/华康娃娃体W5 & 华康娃娃体W5(P).ttc"
+  ],
+  "DFShaoNvW3-GB": [
+    "简体/DynaFont（华康）/华康少女文字W3 & 华康少女文字W3P.ttc"
+  ],
+  "华康少女文字W3": [
+    "简体/DynaFont（华康）/华康少女文字W3 & 华康少女文字W3P.ttc"
+  ],
+  "DFPShaoNvW3-GB": [
+    "简体/DynaFont（华康）/华康少女文字W3 & 华康少女文字W3P.ttc"
+  ],
+  "华康少女文字W3P": [
+    "简体/DynaFont（华康）/华康少女文字W3 & 华康少女文字W3P.ttc"
+  ],
+  "DFShaoNvW5-GB": [
+    "简体/DynaFont（华康）/华康少女文字W5 & 华康少女文字W5(P).ttc"
+  ],
+  "华康少女文字W5": [
+    "简体/DynaFont（华康）/华康少女文字W5 & 华康少女文字W5(P).ttc"
+  ],
+  "DFPShaoNvW5-GB": [
+    "简体/DynaFont（华康）/华康少女文字W5 & 华康少女文字W5(P).ttc"
+  ],
+  "华康少女文字W5(P)": [
+    "简体/DynaFont（华康）/华康少女文字W5 & 华康少女文字W5(P).ttc"
+  ],
+  "DFBuDingW12-GB": [
+    "简体/DynaFont（华康）/华康布丁体W12 & 华康布丁体W12(P).ttc"
+  ],
+  "华康布丁体W12": [
+    "简体/DynaFont（华康）/华康布丁体W12 & 华康布丁体W12(P).ttc"
+  ],
+  "DFPBuDingW12-GB": [
+    "简体/DynaFont（华康）/华康布丁体W12 & 华康布丁体W12(P).ttc"
+  ],
+  "华康布丁体W12(P)": [
+    "简体/DynaFont（华康）/华康布丁体W12 & 华康布丁体W12(P).ttc"
+  ],
+  "DFHannotateW5-GB": [
+    "简体/DynaFont（华康）/华康手札体W5 & 华康手札体W5P.ttc"
+  ],
+  "华康手札体W5": [
+    "简体/DynaFont（华康）/华康手札体W5 & 华康手札体W5P.ttc"
+  ],
+  "DFPHannotateW5-GB": [
+    "简体/DynaFont（华康）/华康手札体W5 & 华康手札体W5P.ttc"
+  ],
+  "华康手札体W5P": [
+    "简体/DynaFont（华康）/华康手札体W5 & 华康手札体W5P.ttc"
+  ],
+  "DFHannotateW7-GB": [
+    "简体/DynaFont（华康）/华康手札体W7 & 华康手札体W7P.ttc"
+  ],
+  "华康手札体W7": [
+    "简体/DynaFont（华康）/华康手札体W7 & 华康手札体W7P.ttc"
+  ],
+  "DFPHannotateW7-GB": [
+    "简体/DynaFont（华康）/华康手札体W7 & 华康手札体W7P.ttc"
+  ],
+  "华康手札体W7P": [
+    "简体/DynaFont（华康）/华康手札体W7 & 华康手札体W7P.ttc"
+  ],
+  "DFZongYiW7-GB": [
+    "简体/DynaFont（华康）/华康新综艺W7 & 华康新综艺W7(P).ttc"
+  ],
+  "华康新综艺W7": [
+    "简体/DynaFont（华康）/华康新综艺W7 & 华康新综艺W7(P).ttc"
+  ],
+  "DFPZongYiW7-GB": [
+    "简体/DynaFont（华康）/华康新综艺W7 & 华康新综艺W7(P).ttc"
+  ],
+  "华康新综艺W7(P)": [
+    "简体/DynaFont（华康）/华康新综艺W7 & 华康新综艺W7(P).ttc"
+  ],
+  "DFFangYuanW7-GB": [
+    "简体/DynaFont（华康）/华康方圆体W7 & 华康方圆体W7(P).ttc"
+  ],
+  "华康方圆体W7": [
+    "简体/DynaFont（华康）/华康方圆体W7 & 华康方圆体W7(P).ttc"
+  ],
+  "DFPFangYuanW7-GB": [
+    "简体/DynaFont（华康）/华康方圆体W7 & 华康方圆体W7(P).ttc"
+  ],
+  "华康方圆体W7(P)": [
+    "简体/DynaFont（华康）/华康方圆体W7 & 华康方圆体W7(P).ttc"
+  ],
+  "DFYanKaiW7-GB": [
+    "简体/DynaFont（华康）/华康正颜楷体W7 & 华康正颜楷体W7P.ttc"
+  ],
+  "华康正颜楷体W7": [
+    "简体/DynaFont（华康）/华康正颜楷体W7 & 华康正颜楷体W7P.ttc"
+  ],
+  "DFPYanKaiW7-GB": [
+    "简体/DynaFont（华康）/华康正颜楷体W7 & 华康正颜楷体W7P.ttc"
+  ],
+  "华康正颜楷体W7P": [
+    "简体/DynaFont（华康）/华康正颜楷体W7 & 华康正颜楷体W7P.ttc"
+  ],
+  "DFChu SC2 W4": [
+    "简体/DynaFont（华康）/华康竹风体W4 & 华康竹风体W4(P).ttc"
+  ],
+  "华康竹风体W4": [
+    "简体/DynaFont（华康）/华康竹风体W4 & 华康竹风体W4(P).ttc"
+  ],
+  "DFPChu SC2 W4": [
+    "简体/DynaFont（华康）/华康竹风体W4 & 华康竹风体W4(P).ttc"
+  ],
+  "华康竹风体W4(P)": [
+    "简体/DynaFont（华康）/华康竹风体W4 & 华康竹风体W4(P).ttc"
+  ],
+  "DFHanziPenW3-GB": [
+    "简体/DynaFont（华康）/华康翩翩体W3 & 华康翩翩体W3P.ttc"
+  ],
+  "华康翩翩体W3": [
+    "简体/DynaFont（华康）/华康翩翩体W3 & 华康翩翩体W3P.ttc"
+  ],
+  "DFPHanziPenW3-GB": [
+    "简体/DynaFont（华康）/华康翩翩体W3 & 华康翩翩体W3P.ttc"
+  ],
+  "华康翩翩体W3P": [
+    "简体/DynaFont（华康）/华康翩翩体W3 & 华康翩翩体W3P.ttc"
+  ],
+  "DFHanziPenW5-GB": [
+    "简体/DynaFont（华康）/华康翩翩体W5 & 华康翩翩体W5P.ttc"
+  ],
+  "华康翩翩体W5": [
+    "简体/DynaFont（华康）/华康翩翩体W5 & 华康翩翩体W5P.ttc"
+  ],
+  "DFPHanziPenW5-GB": [
+    "简体/DynaFont（华康）/华康翩翩体W5 & 华康翩翩体W5P.ttc"
+  ],
+  "华康翩翩体W5P": [
+    "简体/DynaFont（华康）/华康翩翩体W5 & 华康翩翩体W5P.ttc"
+  ],
+  "DFJinWenW3-GB": [
+    "简体/DynaFont（华康）/华康金文体W3 & 华康金文体W3(P).ttc"
+  ],
+  "华康金文体W3": [
+    "简体/DynaFont（华康）/华康金文体W3 & 华康金文体W3(P).ttc"
+  ],
+  "DFPJinWenW3-GB": [
+    "简体/DynaFont（华康）/华康金文体W3 & 华康金文体W3(P).ttc"
+  ],
+  "华康金文体W3(P)": [
+    "简体/DynaFont（华康）/华康金文体W3 & 华康金文体W3(P).ttc"
+  ],
   "MComic PRC": [
     "简体/Monotype（蒙纳）/MComic PRC Medium.ttf"
   ],
@@ -3393,6 +4377,234 @@
   ],
   "Source Han Sans TW Medium": [
     "繁体/Adobe/思源黑體 TW Medium.otf"
+  ],
+  "DFPOP1W5-B5": [
+    "繁体/DynaFont（华康）/華康POP1體W5 & 華康POP1體W5(P).ttc"
+  ],
+  "華康POP1體W5": [
+    "繁体/DynaFont（华康）/華康POP1體W5 & 華康POP1體W5(P).ttc"
+  ],
+  "DFPPOP1W5-B5": [
+    "繁体/DynaFont（华康）/華康POP1體W5 & 華康POP1體W5(P).ttc"
+  ],
+  "華康POP1體W5(P)": [
+    "繁体/DynaFont（华康）/華康POP1體W5 & 華康POP1體W5(P).ttc"
+  ],
+  "DFPOP3W12-B5": [
+    "繁体/DynaFont（华康）/華康POP3體W12 & 華康POP3體W12(P).ttc"
+  ],
+  "華康POP3體W12": [
+    "繁体/DynaFont（华康）/華康POP3體W12 & 華康POP3體W12(P).ttc"
+  ],
+  "DFPPOP3W12-B5": [
+    "繁体/DynaFont（华康）/華康POP3體W12 & 華康POP3體W12(P).ttc"
+  ],
+  "華康POP3體W12(P)": [
+    "繁体/DynaFont（华康）/華康POP3體W12 & 華康POP3體W12(P).ttc"
+  ],
+  "DFLiKingHei-XB": [
+    "繁体/DynaFont（华康）/華康儷金黑 & 華康儷金黑(P).ttc"
+  ],
+  "華康儷金黑": [
+    "繁体/DynaFont（华康）/華康儷金黑 & 華康儷金黑(P).ttc"
+  ],
+  "DFPLiKingHei-XB": [
+    "繁体/DynaFont（华康）/華康儷金黑 & 華康儷金黑(P).ttc"
+  ],
+  "華康儷金黑(P)": [
+    "繁体/DynaFont（华康）/華康儷金黑 & 華康儷金黑(P).ttc"
+  ],
+  "DFKanTingLiu-B5": [
+    "繁体/DynaFont（华康）/華康勘亭流 & 華康勘亭流(P).ttc"
+  ],
+  "華康勘亭流": [
+    "繁体/DynaFont（华康）/華康勘亭流 & 華康勘亭流(P).ttc"
+  ],
+  "DFPKanTingLiu-B5": [
+    "繁体/DynaFont（华康）/華康勘亭流 & 華康勘亭流(P).ttc"
+  ],
+  "華康勘亭流(P)": [
+    "繁体/DynaFont（华康）/華康勘亭流 & 華康勘亭流(P).ttc"
+  ],
+  "DFRareBook-Ginkgo TC1 W3": [
+    "繁体/DynaFont（华康）/華康古籍銀杏W3 & 華康古籍銀杏W3P.ttc"
+  ],
+  "華康古籍銀杏W3": [
+    "繁体/DynaFont（华康）/華康古籍銀杏W3 & 華康古籍銀杏W3P.ttc"
+  ],
+  "DFPRareBook-Ginkgo TC1 W3": [
+    "繁体/DynaFont（华康）/華康古籍銀杏W3 & 華康古籍銀杏W3P.ttc"
+  ],
+  "華康古籍銀杏W3P": [
+    "繁体/DynaFont（华康）/華康古籍銀杏W3 & 華康古籍銀杏W3P.ttc"
+  ],
+  "DFWaWa-B5": [
+    "繁体/DynaFont（华康）/華康娃娃體 & 華康娃娃體(P).ttc"
+  ],
+  "華康娃娃體": [
+    "繁体/DynaFont（华康）/華康娃娃體 & 華康娃娃體(P).ttc"
+  ],
+  "DFPWaWa-B5": [
+    "繁体/DynaFont（华康）/華康娃娃體 & 華康娃娃體(P).ttc"
+  ],
+  "華康娃娃體(P)": [
+    "繁体/DynaFont（华康）/華康娃娃體 & 華康娃娃體(P).ttc"
+  ],
+  "DFGirlW3-B5": [
+    "繁体/DynaFont（华康）/華康少女文字W3 & 華康少女文字W3(P).ttc"
+  ],
+  "華康少女文字W3": [
+    "繁体/DynaFont（华康）/華康少女文字W3 & 華康少女文字W3(P).ttc"
+  ],
+  "DFPGirlW3-B5": [
+    "繁体/DynaFont（华康）/華康少女文字W3 & 華康少女文字W3(P).ttc"
+  ],
+  "華康少女文字W3(P)": [
+    "繁体/DynaFont（华康）/華康少女文字W3 & 華康少女文字W3(P).ttc"
+  ],
+  "DFGirlW5-B5": [
+    "繁体/DynaFont（华康）/華康少女文字W5 & 華康少女文字W5(P).ttc"
+  ],
+  "華康少女文字W5": [
+    "繁体/DynaFont（华康）/華康少女文字W5 & 華康少女文字W5(P).ttc"
+  ],
+  "DFPGirlW5-B5": [
+    "繁体/DynaFont（华康）/華康少女文字W5 & 華康少女文字W5(P).ttc"
+  ],
+  "華康少女文字W5(P)": [
+    "繁体/DynaFont（华康）/華康少女文字W5 & 華康少女文字W5(P).ttc"
+  ],
+  "DFPuDing-B5": [
+    "繁体/DynaFont（华康）/華康布丁體 & 華康布丁體(P).ttc"
+  ],
+  "華康布丁體": [
+    "繁体/DynaFont（华康）/華康布丁體 & 華康布丁體(P).ttc"
+  ],
+  "DFPPuDing-B5": [
+    "繁体/DynaFont（华康）/華康布丁體 & 華康布丁體(P).ttc"
+  ],
+  "華康布丁體(P)": [
+    "繁体/DynaFont（华康）/華康布丁體 & 華康布丁體(P).ttc"
+  ],
+  "DFHannotateW5-B5": [
+    "繁体/DynaFont（华康）/華康手札體W5 & 華康手札體W5P.ttc"
+  ],
+  "華康手札體W5": [
+    "繁体/DynaFont（华康）/華康手札體W5 & 華康手札體W5P.ttc"
+  ],
+  "DFPHannotateW5-B5": [
+    "繁体/DynaFont（华康）/華康手札體W5 & 華康手札體W5P.ttc"
+  ],
+  "華康手札體W5P": [
+    "繁体/DynaFont（华康）/華康手札體W5 & 華康手札體W5P.ttc"
+  ],
+  "DFHannotateW7-B5": [
+    "繁体/DynaFont（华康）/華康手札體W7 & 華康手札體W7P.ttc"
+  ],
+  "華康手札體W7": [
+    "繁体/DynaFont（华康）/華康手札體W7 & 華康手札體W7P.ttc"
+  ],
+  "DFPHannotateW7-B5": [
+    "繁体/DynaFont（华康）/華康手札體W7 & 華康手札體W7P.ttc"
+  ],
+  "華康手札體W7P": [
+    "繁体/DynaFont（华康）/華康手札體W7 & 華康手札體W7P.ttc"
+  ],
+  "DFZongYiBold-B5": [
+    "繁体/DynaFont（华康）/華康新綜藝體 & 華康新綜藝體(P).ttc"
+  ],
+  "華康新綜藝體": [
+    "繁体/DynaFont（华康）/華康新綜藝體 & 華康新綜藝體(P).ttc"
+  ],
+  "DFPZongYiBold-B5": [
+    "繁体/DynaFont（华康）/華康新綜藝體 & 華康新綜藝體(P).ttc"
+  ],
+  "華康新綜藝體(P)": [
+    "繁体/DynaFont（华康）/華康新綜藝體 & 華康新綜藝體(P).ttc"
+  ],
+  "DFFangYuanW7-B5": [
+    "繁体/DynaFont（华康）/華康方圓體W7 & 華康方圓體W7(P).ttc"
+  ],
+  "華康方圓體W7": [
+    "繁体/DynaFont（华康）/華康方圓體W7 & 華康方圓體W7(P).ttc"
+  ],
+  "DFPFangYuanW7-B5": [
+    "繁体/DynaFont（华康）/華康方圓體W7 & 華康方圓體W7(P).ttc"
+  ],
+  "華康方圓體W7(P)": [
+    "繁体/DynaFont（华康）/華康方圓體W7 & 華康方圓體W7(P).ttc"
+  ],
+  "DFYanKaiW7-B5": [
+    "繁体/DynaFont（华康）/華康正顏楷體W7 & 華康正顏楷體W7(P).ttc"
+  ],
+  "華康正顏楷體W7": [
+    "繁体/DynaFont（华康）/華康正顏楷體W7 & 華康正顏楷體W7(P).ttc"
+  ],
+  "DFPYanKaiW7-B5": [
+    "繁体/DynaFont（华康）/華康正顏楷體W7 & 華康正顏楷體W7(P).ttc"
+  ],
+  "華康正顏楷體W7(P)": [
+    "繁体/DynaFont（华康）/華康正顏楷體W7 & 華康正顏楷體W7(P).ttc"
+  ],
+  "DFChuW4-B5": [
+    "繁体/DynaFont（华康）/華康竹風體W4 & 華康竹風體W4(P).ttc"
+  ],
+  "華康竹風體W4": [
+    "繁体/DynaFont（华康）/華康竹風體W4 & 華康竹風體W4(P).ttc"
+  ],
+  "DFPChuW4-B5": [
+    "繁体/DynaFont（华康）/華康竹風體W4 & 華康竹風體W4(P).ttc"
+  ],
+  "華康竹風體W4(P)": [
+    "繁体/DynaFont（华康）/華康竹風體W4 & 華康竹風體W4(P).ttc"
+  ],
+  "DFHanziPenW3-B5": [
+    "繁体/DynaFont（华康）/華康翩翩體W3 & 華康翩翩體W3P.ttc"
+  ],
+  "華康翩翩體W3": [
+    "繁体/DynaFont（华康）/華康翩翩體W3 & 華康翩翩體W3P.ttc"
+  ],
+  "DFPHanziPenW3-B5": [
+    "繁体/DynaFont（华康）/華康翩翩體W3 & 華康翩翩體W3P.ttc"
+  ],
+  "華康翩翩體W3P": [
+    "繁体/DynaFont（华康）/華康翩翩體W3 & 華康翩翩體W3P.ttc"
+  ],
+  "DFHanziPenW5-B5": [
+    "繁体/DynaFont（华康）/華康翩翩體W5 & 華康翩翩體W5P.ttc"
+  ],
+  "華康翩翩體W5": [
+    "繁体/DynaFont（华康）/華康翩翩體W5 & 華康翩翩體W5P.ttc"
+  ],
+  "DFPHanziPenW5-B5": [
+    "繁体/DynaFont（华康）/華康翩翩體W5 & 華康翩翩體W5P.ttc"
+  ],
+  "華康翩翩體W5P": [
+    "繁体/DynaFont（华康）/華康翩翩體W5 & 華康翩翩體W5P.ttc"
+  ],
+  "DFHuaZongW5-B5": [
+    "繁体/DynaFont（华康）/華康華綜體W5 & 華康華綜體W5(P).ttc"
+  ],
+  "華康華綜體W5": [
+    "繁体/DynaFont（华康）/華康華綜體W5 & 華康華綜體W5(P).ttc"
+  ],
+  "DFPHuaZongW5-B5": [
+    "繁体/DynaFont（华康）/華康華綜體W5 & 華康華綜體W5(P).ttc"
+  ],
+  "華康華綜體W5(P)": [
+    "繁体/DynaFont（华康）/華康華綜體W5 & 華康華綜體W5(P).ttc"
+  ],
+  "DFJinWenW3-B5": [
+    "繁体/DynaFont（华康）/華康金文體W3 & 華康金文體W3(P).ttc"
+  ],
+  "華康金文體W3": [
+    "繁体/DynaFont（华康）/華康金文體W3 & 華康金文體W3(P).ttc"
+  ],
+  "DFPJinWenW3-B5": [
+    "繁体/DynaFont（华康）/華康金文體W3 & 華康金文體W3(P).ttc"
+  ],
+  "華康金文體W3(P)": [
+    "繁体/DynaFont（华康）/華康金文體W3 & 華康金文體W3(P).ttc"
   ],
   "MComic HK": [
     "繁体/Monotype（蒙纳）/MComic HK Medium.ttf"

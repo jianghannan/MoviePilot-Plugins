@@ -1,0 +1,650 @@
+{
+  "Sarasa Fixed SC": [
+    "sarasa-fixed-sc-bold.ttf",
+    "sarasa-fixed-sc-bolditalic.ttf",
+    "sarasa-fixed-sc-italic.ttf",
+    "sarasa-fixed-sc-regular.ttf"
+  ],
+  "Sarasa Fixed SC Bold": [
+    "sarasa-fixed-sc-bold.ttf"
+  ],
+  "Sarasa Fixed SC Bold Italic": [
+    "sarasa-fixed-sc-bolditalic.ttf"
+  ],
+  "Sarasa Fixed SC Xlight": [
+    "sarasa-fixed-sc-extralight.ttf",
+    "sarasa-fixed-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Fixed SC Xlight Italic": [
+    "sarasa-fixed-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Fixed SC Italic": [
+    "sarasa-fixed-sc-italic.ttf"
+  ],
+  "Sarasa Fixed SC Light": [
+    "sarasa-fixed-sc-light.ttf",
+    "sarasa-fixed-sc-lightitalic.ttf"
+  ],
+  "Sarasa Fixed SC Light Italic": [
+    "sarasa-fixed-sc-lightitalic.ttf"
+  ],
+  "Sarasa Fixed SC Semibold": [
+    "sarasa-fixed-sc-semibold.ttf",
+    "sarasa-fixed-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Fixed SC Semibold Italic": [
+    "sarasa-fixed-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC": [
+    "sarasa-fixed-slab-sc-bold.ttf",
+    "sarasa-fixed-slab-sc-bolditalic.ttf",
+    "sarasa-fixed-slab-sc-italic.ttf",
+    "sarasa-fixed-slab-sc-regular.ttf"
+  ],
+  "Sarasa Fixed Slab SC Bold": [
+    "sarasa-fixed-slab-sc-bold.ttf"
+  ],
+  "Sarasa Fixed Slab SC Bold Italic": [
+    "sarasa-fixed-slab-sc-bolditalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Xlight": [
+    "sarasa-fixed-slab-sc-extralight.ttf",
+    "sarasa-fixed-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Xlight Italic": [
+    "sarasa-fixed-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Italic": [
+    "sarasa-fixed-slab-sc-italic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Light": [
+    "sarasa-fixed-slab-sc-light.ttf",
+    "sarasa-fixed-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Light Italic": [
+    "sarasa-fixed-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Semibold": [
+    "sarasa-fixed-slab-sc-semibold.ttf",
+    "sarasa-fixed-slab-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Fixed Slab SC Semibold Italic": [
+    "sarasa-fixed-slab-sc-semibolditalic.ttf"
+  ],
+  "更紗黑體 CL": [
+    "sarasa-gothic-cl-bold.ttf",
+    "sarasa-gothic-cl-bolditalic.ttf",
+    "sarasa-gothic-cl-italic.ttf",
+    "sarasa-gothic-cl-regular.ttf"
+  ],
+  "更紗黑體 CL Bold": [
+    "sarasa-gothic-cl-bold.ttf"
+  ],
+  "Sarasa Gothic CL": [
+    "sarasa-gothic-cl-bold.ttf",
+    "sarasa-gothic-cl-bolditalic.ttf",
+    "sarasa-gothic-cl-italic.ttf",
+    "sarasa-gothic-cl-regular.ttf"
+  ],
+  "Sarasa Gothic CL Bold": [
+    "sarasa-gothic-cl-bold.ttf"
+  ],
+  "更紗黑體 CL Bold Italic": [
+    "sarasa-gothic-cl-bolditalic.ttf"
+  ],
+  "Sarasa Gothic CL Bold Italic": [
+    "sarasa-gothic-cl-bolditalic.ttf"
+  ],
+  "更紗黑體 CL Xlight": [
+    "sarasa-gothic-cl-extralight.ttf",
+    "sarasa-gothic-cl-extralightitalic.ttf"
+  ],
+  "Sarasa Gothic CL Xlight": [
+    "sarasa-gothic-cl-extralight.ttf",
+    "sarasa-gothic-cl-extralightitalic.ttf"
+  ],
+  "更紗黑體 CL Xlight Italic": [
+    "sarasa-gothic-cl-extralightitalic.ttf"
+  ],
+  "Sarasa Gothic CL Xlight Italic": [
+    "sarasa-gothic-cl-extralightitalic.ttf"
+  ],
+  "更紗黑體 CL Italic": [
+    "sarasa-gothic-cl-italic.ttf"
+  ],
+  "Sarasa Gothic CL Italic": [
+    "sarasa-gothic-cl-italic.ttf"
+  ],
+  "更紗黑體 CL Light": [
+    "sarasa-gothic-cl-light.ttf",
+    "sarasa-gothic-cl-lightitalic.ttf"
+  ],
+  "Sarasa Gothic CL Light": [
+    "sarasa-gothic-cl-light.ttf",
+    "sarasa-gothic-cl-lightitalic.ttf"
+  ],
+  "更紗黑體 CL Light Italic": [
+    "sarasa-gothic-cl-lightitalic.ttf"
+  ],
+  "Sarasa Gothic CL Light Italic": [
+    "sarasa-gothic-cl-lightitalic.ttf"
+  ],
+  "更紗黑體 CL Semibold": [
+    "sarasa-gothic-cl-semibold.ttf",
+    "sarasa-gothic-cl-semibolditalic.ttf"
+  ],
+  "Sarasa Gothic CL Semibold": [
+    "sarasa-gothic-cl-semibold.ttf",
+    "sarasa-gothic-cl-semibolditalic.ttf"
+  ],
+  "更紗黑體 CL Semibold Italic": [
+    "sarasa-gothic-cl-semibolditalic.ttf"
+  ],
+  "Sarasa Gothic CL Semibold Italic": [
+    "sarasa-gothic-cl-semibolditalic.ttf"
+  ],
+  "Sarasa Mono SC": [
+    "sarasa-mono-sc-bold.ttf",
+    "sarasa-mono-sc-bolditalic.ttf",
+    "sarasa-mono-sc-italic.ttf",
+    "sarasa-mono-sc-regular.ttf"
+  ],
+  "Sarasa Mono SC Bold": [
+    "sarasa-mono-sc-bold.ttf"
+  ],
+  "等距更纱黑体 SC": [
+    "sarasa-mono-sc-bold.ttf",
+    "sarasa-mono-sc-bolditalic.ttf",
+    "sarasa-mono-sc-italic.ttf",
+    "sarasa-mono-sc-regular.ttf"
+  ],
+  "等距更纱黑体 SC Bold": [
+    "sarasa-mono-sc-bold.ttf"
+  ],
+  "Sarasa Mono SC Bold Italic": [
+    "sarasa-mono-sc-bolditalic.ttf"
+  ],
+  "等距更纱黑体 SC Bold Italic": [
+    "sarasa-mono-sc-bolditalic.ttf"
+  ],
+  "Sarasa Mono SC Xlight": [
+    "sarasa-mono-sc-extralight.ttf",
+    "sarasa-mono-sc-extralightitalic.ttf"
+  ],
+  "等距更纱黑体 SC Xlight": [
+    "sarasa-mono-sc-extralight.ttf",
+    "sarasa-mono-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Mono SC Xlight Italic": [
+    "sarasa-mono-sc-extralightitalic.ttf"
+  ],
+  "等距更纱黑体 SC Xlight Italic": [
+    "sarasa-mono-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Mono SC Italic": [
+    "sarasa-mono-sc-italic.ttf"
+  ],
+  "等距更纱黑体 SC Italic": [
+    "sarasa-mono-sc-italic.ttf"
+  ],
+  "Sarasa Mono SC Light": [
+    "sarasa-mono-sc-light.ttf",
+    "sarasa-mono-sc-lightitalic.ttf"
+  ],
+  "等距更纱黑体 SC Light": [
+    "sarasa-mono-sc-light.ttf",
+    "sarasa-mono-sc-lightitalic.ttf"
+  ],
+  "Sarasa Mono SC Light Italic": [
+    "sarasa-mono-sc-lightitalic.ttf"
+  ],
+  "等距更纱黑体 SC Light Italic": [
+    "sarasa-mono-sc-lightitalic.ttf"
+  ],
+  "Sarasa Mono SC Semibold": [
+    "sarasa-mono-sc-semibold.ttf",
+    "sarasa-mono-sc-semibolditalic.ttf"
+  ],
+  "等距更纱黑体 SC Semibold": [
+    "sarasa-mono-sc-semibold.ttf",
+    "sarasa-mono-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Mono SC Semibold Italic": [
+    "sarasa-mono-sc-semibolditalic.ttf"
+  ],
+  "等距更纱黑体 SC Semibold Italic": [
+    "sarasa-mono-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Mono Slab SC": [
+    "sarasa-mono-slab-sc-bold.ttf",
+    "sarasa-mono-slab-sc-bolditalic.ttf",
+    "sarasa-mono-slab-sc-italic.ttf",
+    "sarasa-mono-slab-sc-regular.ttf"
+  ],
+  "Sarasa Mono Slab SC Bold": [
+    "sarasa-mono-slab-sc-bold.ttf"
+  ],
+  "等距更纱黑体 Slab SC": [
+    "sarasa-mono-slab-sc-bold.ttf",
+    "sarasa-mono-slab-sc-bolditalic.ttf",
+    "sarasa-mono-slab-sc-italic.ttf",
+    "sarasa-mono-slab-sc-regular.ttf"
+  ],
+  "等距更纱黑体 Slab SC Bold": [
+    "sarasa-mono-slab-sc-bold.ttf"
+  ],
+  "Sarasa Mono Slab SC Bold Italic": [
+    "sarasa-mono-slab-sc-bolditalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Bold Italic": [
+    "sarasa-mono-slab-sc-bolditalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Xlight": [
+    "sarasa-mono-slab-sc-extralight.ttf",
+    "sarasa-mono-slab-sc-extralightitalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Xlight": [
+    "sarasa-mono-slab-sc-extralight.ttf",
+    "sarasa-mono-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Xlight Italic": [
+    "sarasa-mono-slab-sc-extralightitalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Xlight Italic": [
+    "sarasa-mono-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Italic": [
+    "sarasa-mono-slab-sc-italic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Italic": [
+    "sarasa-mono-slab-sc-italic.ttf"
+  ],
+  "Sarasa Mono Slab SC Light": [
+    "sarasa-mono-slab-sc-light.ttf",
+    "sarasa-mono-slab-sc-lightitalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Light": [
+    "sarasa-mono-slab-sc-light.ttf",
+    "sarasa-mono-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Light Italic": [
+    "sarasa-mono-slab-sc-lightitalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Light Italic": [
+    "sarasa-mono-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Semibold": [
+    "sarasa-mono-slab-sc-semibold.ttf",
+    "sarasa-mono-slab-sc-semibolditalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Semibold": [
+    "sarasa-mono-slab-sc-semibold.ttf",
+    "sarasa-mono-slab-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Mono Slab SC Semibold Italic": [
+    "sarasa-mono-slab-sc-semibolditalic.ttf"
+  ],
+  "等距更纱黑体 Slab SC Semibold Italic": [
+    "sarasa-mono-slab-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Term SC": [
+    "sarasa-term-sc-bold.ttf",
+    "sarasa-term-sc-bolditalic.ttf",
+    "sarasa-term-sc-italic.ttf",
+    "sarasa-term-sc-regular.ttf"
+  ],
+  "Sarasa Term SC Bold": [
+    "sarasa-term-sc-bold.ttf"
+  ],
+  "Sarasa Term SC Bold Italic": [
+    "sarasa-term-sc-bolditalic.ttf"
+  ],
+  "Sarasa Term SC Xlight": [
+    "sarasa-term-sc-extralight.ttf",
+    "sarasa-term-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Term SC Xlight Italic": [
+    "sarasa-term-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Term SC Italic": [
+    "sarasa-term-sc-italic.ttf"
+  ],
+  "Sarasa Term SC Light": [
+    "sarasa-term-sc-light.ttf",
+    "sarasa-term-sc-lightitalic.ttf"
+  ],
+  "Sarasa Term SC Light Italic": [
+    "sarasa-term-sc-lightitalic.ttf"
+  ],
+  "Sarasa Term SC Semibold": [
+    "sarasa-term-sc-semibold.ttf",
+    "sarasa-term-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Term SC Semibold Italic": [
+    "sarasa-term-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Term Slab SC": [
+    "sarasa-term-slab-sc-bold.ttf",
+    "sarasa-term-slab-sc-bolditalic.ttf",
+    "sarasa-term-slab-sc-italic.ttf",
+    "sarasa-term-slab-sc-regular.ttf"
+  ],
+  "Sarasa Term Slab SC Bold": [
+    "sarasa-term-slab-sc-bold.ttf"
+  ],
+  "Sarasa Term Slab SC Bold Italic": [
+    "sarasa-term-slab-sc-bolditalic.ttf"
+  ],
+  "Sarasa Term Slab SC Xlight": [
+    "sarasa-term-slab-sc-extralight.ttf",
+    "sarasa-term-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Term Slab SC Xlight Italic": [
+    "sarasa-term-slab-sc-extralightitalic.ttf"
+  ],
+  "Sarasa Term Slab SC Italic": [
+    "sarasa-term-slab-sc-italic.ttf"
+  ],
+  "Sarasa Term Slab SC Light": [
+    "sarasa-term-slab-sc-light.ttf",
+    "sarasa-term-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Term Slab SC Light Italic": [
+    "sarasa-term-slab-sc-lightitalic.ttf"
+  ],
+  "Sarasa Term Slab SC Semibold": [
+    "sarasa-term-slab-sc-semibold.ttf",
+    "sarasa-term-slab-sc-semibolditalic.ttf"
+  ],
+  "Sarasa Term Slab SC Semibold Italic": [
+    "sarasa-term-slab-sc-semibolditalic.ttf"
+  ],
+  "Sarasa UI HC": [
+    "sarasa-ui-hc-bold.ttf",
+    "sarasa-ui-hc-bolditalic.ttf",
+    "sarasa-ui-hc-italic.ttf",
+    "sarasa-ui-hc-regular.ttf"
+  ],
+  "Sarasa UI HC Bold": [
+    "sarasa-ui-hc-bold.ttf"
+  ],
+  "更紗黑體 UI HC": [
+    "sarasa-ui-hc-bold.ttf",
+    "sarasa-ui-hc-bolditalic.ttf",
+    "sarasa-ui-hc-italic.ttf",
+    "sarasa-ui-hc-regular.ttf"
+  ],
+  "更紗黑體 UI HC Bold": [
+    "sarasa-ui-hc-bold.ttf"
+  ],
+  "Sarasa UI HC Bold Italic": [
+    "sarasa-ui-hc-bolditalic.ttf"
+  ],
+  "更紗黑體 UI HC Bold Italic": [
+    "sarasa-ui-hc-bolditalic.ttf"
+  ],
+  "Sarasa UI HC Xlight": [
+    "sarasa-ui-hc-extralight.ttf",
+    "sarasa-ui-hc-extralightitalic.ttf"
+  ],
+  "更紗黑體 UI HC Xlight": [
+    "sarasa-ui-hc-extralight.ttf",
+    "sarasa-ui-hc-extralightitalic.ttf"
+  ],
+  "Sarasa UI HC Xlight Italic": [
+    "sarasa-ui-hc-extralightitalic.ttf"
+  ],
+  "更紗黑體 UI HC Xlight Italic": [
+    "sarasa-ui-hc-extralightitalic.ttf"
+  ],
+  "Sarasa UI HC Italic": [
+    "sarasa-ui-hc-italic.ttf"
+  ],
+  "更紗黑體 UI HC Italic": [
+    "sarasa-ui-hc-italic.ttf"
+  ],
+  "Sarasa UI HC Light": [
+    "sarasa-ui-hc-light.ttf",
+    "sarasa-ui-hc-lightitalic.ttf"
+  ],
+  "更紗黑體 UI HC Light": [
+    "sarasa-ui-hc-light.ttf",
+    "sarasa-ui-hc-lightitalic.ttf"
+  ],
+  "Sarasa UI HC Light Italic": [
+    "sarasa-ui-hc-lightitalic.ttf"
+  ],
+  "更紗黑體 UI HC Light Italic": [
+    "sarasa-ui-hc-lightitalic.ttf"
+  ],
+  "Sarasa UI HC Semibold": [
+    "sarasa-ui-hc-semibold.ttf",
+    "sarasa-ui-hc-semibolditalic.ttf"
+  ],
+  "更紗黑體 UI HC Semibold": [
+    "sarasa-ui-hc-semibold.ttf",
+    "sarasa-ui-hc-semibolditalic.ttf"
+  ],
+  "Sarasa UI HC Semibold Italic": [
+    "sarasa-ui-hc-semibolditalic.ttf"
+  ],
+  "更紗黑體 UI HC Semibold Italic": [
+    "sarasa-ui-hc-semibolditalic.ttf"
+  ],
+  "Sarasa UI J": [
+    "sarasa-ui-j-bold.ttf",
+    "sarasa-ui-j-bolditalic.ttf",
+    "sarasa-ui-j-italic.ttf",
+    "sarasa-ui-j-regular.ttf"
+  ],
+  "Sarasa UI J Bold": [
+    "sarasa-ui-j-bold.ttf"
+  ],
+  "更紗ゴシック UI J": [
+    "sarasa-ui-j-bold.ttf",
+    "sarasa-ui-j-bolditalic.ttf",
+    "sarasa-ui-j-italic.ttf",
+    "sarasa-ui-j-regular.ttf"
+  ],
+  "更紗ゴシック UI J Bold": [
+    "sarasa-ui-j-bold.ttf"
+  ],
+  "Sarasa UI J Bold Italic": [
+    "sarasa-ui-j-bolditalic.ttf"
+  ],
+  "更紗ゴシック UI J Bold Italic": [
+    "sarasa-ui-j-bolditalic.ttf"
+  ],
+  "Sarasa UI J Xlight": [
+    "sarasa-ui-j-extralight.ttf",
+    "sarasa-ui-j-extralightitalic.ttf"
+  ],
+  "更紗ゴシック UI J Xlight": [
+    "sarasa-ui-j-extralight.ttf",
+    "sarasa-ui-j-extralightitalic.ttf"
+  ],
+  "Sarasa UI J Xlight Italic": [
+    "sarasa-ui-j-extralightitalic.ttf"
+  ],
+  "更紗ゴシック UI J Xlight Italic": [
+    "sarasa-ui-j-extralightitalic.ttf"
+  ],
+  "Sarasa UI J Italic": [
+    "sarasa-ui-j-italic.ttf"
+  ],
+  "更紗ゴシック UI J Italic": [
+    "sarasa-ui-j-italic.ttf"
+  ],
+  "Sarasa UI J Light": [
+    "sarasa-ui-j-light.ttf",
+    "sarasa-ui-j-lightitalic.ttf"
+  ],
+  "更紗ゴシック UI J Light": [
+    "sarasa-ui-j-light.ttf",
+    "sarasa-ui-j-lightitalic.ttf"
+  ],
+  "Sarasa UI J Light Italic": [
+    "sarasa-ui-j-lightitalic.ttf"
+  ],
+  "更紗ゴシック UI J Light Italic": [
+    "sarasa-ui-j-lightitalic.ttf"
+  ],
+  "Sarasa UI J Semibold": [
+    "sarasa-ui-j-semibold.ttf",
+    "sarasa-ui-j-semibolditalic.ttf"
+  ],
+  "更紗ゴシック UI J Semibold": [
+    "sarasa-ui-j-semibold.ttf",
+    "sarasa-ui-j-semibolditalic.ttf"
+  ],
+  "Sarasa UI J Semibold Italic": [
+    "sarasa-ui-j-semibolditalic.ttf"
+  ],
+  "更紗ゴシック UI J Semibold Italic": [
+    "sarasa-ui-j-semibolditalic.ttf"
+  ],
+  "Sarasa UI SC": [
+    "sarasa-ui-sc-bold.ttf",
+    "sarasa-ui-sc-bolditalic.ttf",
+    "sarasa-ui-sc-italic.ttf",
+    "sarasa-ui-sc-regular.ttf"
+  ],
+  "Sarasa UI SC Bold": [
+    "sarasa-ui-sc-bold.ttf"
+  ],
+  "更纱黑体 UI SC": [
+    "sarasa-ui-sc-bold.ttf",
+    "sarasa-ui-sc-bolditalic.ttf",
+    "sarasa-ui-sc-italic.ttf",
+    "sarasa-ui-sc-regular.ttf"
+  ],
+  "更纱黑体 UI SC Bold": [
+    "sarasa-ui-sc-bold.ttf"
+  ],
+  "Sarasa UI SC Bold Italic": [
+    "sarasa-ui-sc-bolditalic.ttf"
+  ],
+  "更纱黑体 UI SC Bold Italic": [
+    "sarasa-ui-sc-bolditalic.ttf"
+  ],
+  "Sarasa UI SC Xlight": [
+    "sarasa-ui-sc-extralight.ttf",
+    "sarasa-ui-sc-extralightitalic.ttf"
+  ],
+  "更纱黑体 UI SC Xlight": [
+    "sarasa-ui-sc-extralight.ttf",
+    "sarasa-ui-sc-extralightitalic.ttf"
+  ],
+  "Sarasa UI SC Xlight Italic": [
+    "sarasa-ui-sc-extralightitalic.ttf"
+  ],
+  "更纱黑体 UI SC Xlight Italic": [
+    "sarasa-ui-sc-extralightitalic.ttf"
+  ],
+  "Sarasa UI SC Italic": [
+    "sarasa-ui-sc-italic.ttf"
+  ],
+  "更纱黑体 UI SC Italic": [
+    "sarasa-ui-sc-italic.ttf"
+  ],
+  "Sarasa UI SC Light": [
+    "sarasa-ui-sc-light.ttf",
+    "sarasa-ui-sc-lightitalic.ttf"
+  ],
+  "更纱黑体 UI SC Light": [
+    "sarasa-ui-sc-light.ttf",
+    "sarasa-ui-sc-lightitalic.ttf"
+  ],
+  "Sarasa UI SC Light Italic": [
+    "sarasa-ui-sc-lightitalic.ttf"
+  ],
+  "更纱黑体 UI SC Light Italic": [
+    "sarasa-ui-sc-lightitalic.ttf"
+  ],
+  "Sarasa UI SC Semibold": [
+    "sarasa-ui-sc-semibold.ttf",
+    "sarasa-ui-sc-semibolditalic.ttf"
+  ],
+  "更纱黑体 UI SC Semibold": [
+    "sarasa-ui-sc-semibold.ttf",
+    "sarasa-ui-sc-semibolditalic.ttf"
+  ],
+  "Sarasa UI SC Semibold Italic": [
+    "sarasa-ui-sc-semibolditalic.ttf"
+  ],
+  "更纱黑体 UI SC Semibold Italic": [
+    "sarasa-ui-sc-semibolditalic.ttf"
+  ],
+  "更紗黑體 UI TC": [
+    "sarasa-ui-tc-bold.ttf",
+    "sarasa-ui-tc-bolditalic.ttf",
+    "sarasa-ui-tc-italic.ttf",
+    "sarasa-ui-tc-regular.ttf"
+  ],
+  "更紗黑體 UI TC Bold": [
+    "sarasa-ui-tc-bold.ttf"
+  ],
+  "Sarasa UI TC": [
+    "sarasa-ui-tc-bold.ttf",
+    "sarasa-ui-tc-bolditalic.ttf",
+    "sarasa-ui-tc-italic.ttf",
+    "sarasa-ui-tc-regular.ttf"
+  ],
+  "Sarasa UI TC Bold": [
+    "sarasa-ui-tc-bold.ttf"
+  ],
+  "更紗黑體 UI TC Bold Italic": [
+    "sarasa-ui-tc-bolditalic.ttf"
+  ],
+  "Sarasa UI TC Bold Italic": [
+    "sarasa-ui-tc-bolditalic.ttf"
+  ],
+  "更紗黑體 UI TC Xlight": [
+    "sarasa-ui-tc-extralight.ttf",
+    "sarasa-ui-tc-extralightitalic.ttf"
+  ],
+  "Sarasa UI TC Xlight": [
+    "sarasa-ui-tc-extralight.ttf",
+    "sarasa-ui-tc-extralightitalic.ttf"
+  ],
+  "更紗黑體 UI TC Xlight Italic": [
+    "sarasa-ui-tc-extralightitalic.ttf"
+  ],
+  "Sarasa UI TC Xlight Italic": [
+    "sarasa-ui-tc-extralightitalic.ttf"
+  ],
+  "更紗黑體 UI TC Italic": [
+    "sarasa-ui-tc-italic.ttf"
+  ],
+  "Sarasa UI TC Italic": [
+    "sarasa-ui-tc-italic.ttf"
+  ],
+  "更紗黑體 UI TC Light": [
+    "sarasa-ui-tc-light.ttf",
+    "sarasa-ui-tc-lightitalic.ttf"
+  ],
+  "Sarasa UI TC Light": [
+    "sarasa-ui-tc-light.ttf",
+    "sarasa-ui-tc-lightitalic.ttf"
+  ],
+  "更紗黑體 UI TC Light Italic": [
+    "sarasa-ui-tc-lightitalic.ttf"
+  ],
+  "Sarasa UI TC Light Italic": [
+    "sarasa-ui-tc-lightitalic.ttf"
+  ],
+  "更紗黑體 UI TC Semibold": [
+    "sarasa-ui-tc-semibold.ttf",
+    "sarasa-ui-tc-semibolditalic.ttf"
+  ],
+  "Sarasa UI TC Semibold": [
+    "sarasa-ui-tc-semibold.ttf",
+    "sarasa-ui-tc-semibolditalic.ttf"
+  ],
+  "更紗黑體 UI TC Semibold Italic": [
+    "sarasa-ui-tc-semibolditalic.ttf"
+  ],
+  "Sarasa UI TC Semibold Italic": [
+    "sarasa-ui-tc-semibolditalic.ttf"
+  ]
+}

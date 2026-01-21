@@ -17,6 +17,30 @@
   "EVA 常规": [
     "EVA.ttf"
   ],
+  "Gulim": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "굴림": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "GulimChe": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "굴림체": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "Dotum": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "돋움": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "DotumChe": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
+  "돋움체": [
+    "Gulim & GulimChe & Dotum & DotumChe.ttc"
+  ],
   "H-GungSeo": [
     "H-宫书.ttf"
   ],
@@ -28,6 +52,38 @@
   ],
   "iYaHei": [
     "iYaHei.ttf"
+  ],
+  "Klee": [
+    "Klee-Demibold.otf",
+    "Klee-Medium.otf"
+  ],
+  "Klee Demibold": [
+    "Klee-Demibold.otf"
+  ],
+  "ÉNÉ": [
+    "Klee-Demibold.otf",
+    "Klee-Medium.otf"
+  ],
+  "ÉNÉåÅ[ ÉfÉ": [
+    "Klee-Demibold.otf"
+  ],
+  "Klee-Demibold": [
+    "Klee-Demibold.otf"
+  ],
+  "クレー デミボールド": [
+    "Klee-Demibold.otf"
+  ],
+  "Klee Medium": [
+    "Klee-Medium.otf"
+  ],
+  "クレー ミ": [
+    "Klee-Medium.otf"
+  ],
+  "Klee-Medium": [
+    "Klee-Medium.otf"
+  ],
+  "クレー ミディアム": [
+    "Klee-Medium.otf"
   ],
   "LiHei Pro": [
     "LiHei Pro.ttf"
@@ -55,6 +111,130 @@
   ],
   "QSW-锐字云字库准圆体": [
     "QSW-锐字云字库准圆体.otf"
+  ],
+  "SubLan": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubLan Regular": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubLan Bold": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubLanT": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubLanT Regular": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubLanT Bold": [
+    "SubLan Regular & SubLan Bold & SubLanT Regular & SubLanT Bold.ttc"
+  ],
+  "SubSans": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSans Regular": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSans Bold": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSansT": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSansT Regular": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSansT Bold": [
+    "SubSans Regular & SubSans Bold & SubSansT Regular & SubSansT Bold.ttc"
+  ],
+  "SubSerif": [
+    "SubSerif Regular & SubSerif.ttc"
+  ],
+  "SubSerif Regular": [
+    "SubSerif Regular & SubSerif.ttc"
+  ],
+  "SubYuan": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "SubYuan Regular": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "SubYuan Bold": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "SubYuanT": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "SubYuanT Regular": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "SubYuanT Bold": [
+    "SubYuan Regular & SubYuan Bold & SubYuanT Regular & SubYuanT Bold.ttc"
+  ],
+  "Tsukushi A Round Gothic": [
+    "TsukuARdGothic-Bold.otf",
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "Tsukushi A Round Gothic Bold": [
+    "TsukuARdGothic-Bold.otf"
+  ],
+  "í}éáAä€É": [
+    "TsukuARdGothic-Bold.otf",
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "筑紫A丸ゴシッ": [
+    "TsukuARdGothic-Bold.otf"
+  ],
+  "TsukuARdGothic-Bold": [
+    "TsukuARdGothic-Bold.otf"
+  ],
+  "筑紫A丸ゴシック ボールド": [
+    "TsukuARdGothic-Bold.otf"
+  ],
+  "Tsukushi A Round Gothic Regular": [
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "í}éáAä€ÉSÉVÉbÉ": [
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "TsukuARdGothic-Regular": [
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "筑紫A丸ゴシック レギュラー": [
+    "TsukuARdGothic-Regular.otf"
+  ],
+  "Tsukushi B Round Gothic": [
+    "TsukuBRdGothic-Bold.otf",
+    "TsukuBRdGothic-Regular.otf"
+  ],
+  "Tsukushi B Round Gothic Bold": [
+    "TsukuBRdGothic-Bold.otf"
+  ],
+  "í}éáBä€É": [
+    "TsukuBRdGothic-Bold.otf",
+    "TsukuBRdGothic-Regular.otf"
+  ],
+  "筑紫B丸ゴシッ": [
+    "TsukuBRdGothic-Bold.otf"
+  ],
+  "TsukuBRdGothic-Bold": [
+    "TsukuBRdGothic-Bold.otf"
+  ],
+  "筑紫B丸ゴシック ボールド": [
+    "TsukuBRdGothic-Bold.otf"
+  ],
+  "Tsukushi B Round Gothic Regular": [
+    "TsukuBRdGothic-Regular.otf"
+  ],
+  "í}éáBä€ÉSÉVÉbÉ": [
+    "TsukuBRdGothic-Regular.otf"
+  ],
+  "TsukuBRdGothic-Regular": [
+    "TsukuBRdGothic-Regular.otf"
+  ],
+  "筑紫B丸ゴシック レギュラー": [
+    "TsukuBRdGothic-Regular.otf"
   ],
   "ZhunYuan": [
     "ZhunYuan.TTF",
@@ -358,7 +538,8 @@
   ],
   "Heiti SC": [
     "熊兔流星体.ttf",
-    "萝莉体 第二版.ttf"
+    "萝莉体 第二版.ttf",
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
   ],
   "Heiti SC Medium": [
     "熊兔流星体.ttf"
@@ -394,7 +575,8 @@
     "经典黑体简.ttf"
   ],
   "Heiti SC Light": [
-    "萝莉体 第二版.ttf"
+    "萝莉体 第二版.ttf",
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
   ],
   "萝莉体 第二版": [
     "萝莉体 第二版.ttf"
@@ -491,5 +673,137 @@
   ],
   "雅圆Comic sans MS- binsforever 常规": [
     "雅圆Comic sans MS- binsforever 常规.ttf"
+  ],
+  "Heiti TC": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "Heiti TC Light": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑體-繁": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑體-繁 細體": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黒体-繁": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黒体-繁 ライト": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "Heiti-번체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "Heiti-번체 가는체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑体-繁": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑体-繁 细体": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑體-簡": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑體-簡 細體": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黒体-簡": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黒体-簡 ライト": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "Heiti-간체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "Heiti-간체 가는체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑体-简": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "黑体-简 细体": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti GB18030PUA": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti GB18030PUA Light": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti K": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti K Light": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑體-韓語": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑體-韓語 細體": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黒体-韓国語": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黒体-韓国語 ライト": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti-한국어": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti-한국어 가는체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑体-韩语": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑体-韩语 细体": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti J": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti J Light": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑體-日本語": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑體-日本語 細體": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黒体-日本語": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黒体-日本語 ライト": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti-일본어": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".Heiti-일본어 가는체": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑体-日本语": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  ".黑体-日本语 细体": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "-": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "- ": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "何尼玛-细体": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
+  ],
+  "何尼玛-细体 常规": [
+    "黑体-繁 细体 & 黑体-简 细体 & .Heiti GB18030PUA Light & .黑体-韩语 细体 & .黑体-日本语 细体 & 何尼玛-细体 常规.ttc"
   ]
 }
