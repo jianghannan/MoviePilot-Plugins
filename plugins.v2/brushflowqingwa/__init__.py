@@ -268,13 +268,13 @@ class BrushFlow(_PluginBase):
     # 插件图标
     plugin_icon = "brush.jpg"
     # 插件版本
-    plugin_version = "4.3.5"
+    plugin_version = "4.3.5.1"
     # 插件作者
     plugin_author = "jxxghp,InfinityPacer,Seed680,jianghannan"
     # 作者主页
     author_url = "https://github.com/jianghannan"
     # 插件配置项ID前缀
-    plugin_config_prefix = "brushflow_"
+    plugin_config_prefix = "brushflow_qingwa_"
     # 加载顺序
     plugin_order = 21
     # 可使用的用户级别
@@ -447,7 +447,7 @@ class BrushFlow(_PluginBase):
                 logger.info(f"站点刷流定时服务启动，执行周期 {cron}")
                 cron_trigger = CronTrigger.from_crontab(cron)
                 services.append({
-                    "id": "BrushFlow",
+                    "id": "BrushFlow_qingwa",
                     "name": "站点刷流服务",
                     "trigger": cron_trigger,
                     "func": self.brush
@@ -455,7 +455,7 @@ class BrushFlow(_PluginBase):
             else:
                 logger.info(f"站点刷流定时服务启动，时间间隔 {self._brush_interval} 分钟")
                 services.append({
-                    "id": "BrushFlow",
+                    "id": "BrushFlow_qingwa",
                     "name": "站点刷流服务",
                     "trigger": "interval",
                     "func": self.brush,
@@ -465,7 +465,7 @@ class BrushFlow(_PluginBase):
         if brush_config.enabled:
             logger.info(f"站点刷流检查定时服务启动，时间间隔 {self._check_interval} 分钟")
             services.append({
-                "id": "BrushFlowCheck",
+                "id": "BrushFlowCheck_qingwa",
                 "name": "站点刷流检查服务",
                 "trigger": "interval",
                 "func": self.check,
@@ -2163,7 +2163,7 @@ class BrushFlow(_PluginBase):
 
             self.eventmanager.send_event(etype=EventType.PluginTriggered, data={
                 "plugin_id": self.__class__.__name__,
-                "event_name": "brushflow_download_added",
+                "event_name": "brushflow_qingwa_download_added",
                 "hash": hash_string,
                 "data": torrent_task,
                 "downloader": self.service_info.name
