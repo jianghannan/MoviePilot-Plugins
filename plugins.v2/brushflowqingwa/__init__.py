@@ -258,7 +258,7 @@ class BrushConfig:
         return self.__str__()
 
 
-class BrushFlow(_PluginBase):
+class BrushFlowQingWa(_PluginBase):
     # region 全局定义
 
     # 插件名称
