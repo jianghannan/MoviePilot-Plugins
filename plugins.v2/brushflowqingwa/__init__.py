@@ -1875,8 +1875,6 @@ class BrushFlowQingWa(_PluginBase):
             "del_no_free": False,
             "freeleech": "free",
             "hr": "yes",
-            "include_labels": "",
-            "exclude_labels": "",
             "enable_site_config": False,
             "site_config": BrushConfig.get_demo_site_config(),
             "rss_support": False
