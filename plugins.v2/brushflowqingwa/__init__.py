@@ -448,7 +448,7 @@ class BrushFlow(_PluginBase):
                 cron_trigger = CronTrigger.from_crontab(cron)
                 services.append({
                     "id": "BrushFlow_qingwa",
-                    "name": "站点刷流服务",
+                    "name": "站点刷流服务青蛙",
                     "trigger": cron_trigger,
                     "func": self.brush
                 })
@@ -456,7 +456,7 @@ class BrushFlow(_PluginBase):
                 logger.info(f"站点刷流定时服务启动，时间间隔 {self._brush_interval} 分钟")
                 services.append({
                     "id": "BrushFlow_qingwa",
-                    "name": "站点刷流服务",
+                    "name": "站点刷流服务青蛙",
                     "trigger": "interval",
                     "func": self.brush,
                     "kwargs": {"minutes": self._brush_interval}
@@ -466,7 +466,7 @@ class BrushFlow(_PluginBase):
             logger.info(f"站点刷流检查定时服务启动，时间间隔 {self._check_interval} 分钟")
             services.append({
                 "id": "BrushFlowCheck_qingwa",
-                "name": "站点刷流检查服务",
+                "name": "站点刷流检查服务青蛙",
                 "trigger": "interval",
                 "func": self.check,
                 "kwargs": {"minutes": self._check_interval}
