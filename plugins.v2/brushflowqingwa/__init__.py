@@ -268,7 +268,7 @@ class BrushFlow(_PluginBase):
     # 插件图标
     plugin_icon = "brush.jpg"
     # 插件版本
-    plugin_version = "4.3.5.1"
+    plugin_version = "4.3.5"
     # 插件作者
     plugin_author = "jxxghp,InfinityPacer,Seed680,jianghannan"
     # 作者主页
@@ -1880,6 +1880,8 @@ class BrushFlow(_PluginBase):
             "del_no_free": False,
             "freeleech": "free",
             "hr": "yes",
+            "include_labels": "",
+            "exclude_labels": "",
             "enable_site_config": False,
             "site_config": BrushConfig.get_demo_site_config(),
             "rss_support": False
