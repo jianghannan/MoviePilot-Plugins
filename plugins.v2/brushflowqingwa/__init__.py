@@ -268,7 +268,7 @@ class BrushFlowQingWa(_PluginBase):
     # 插件图标
     plugin_icon = "brush.jpg"
     # 插件版本
-    plugin_version = "4.3.5"
+    plugin_version = "4.3.5.1"
     # 插件作者
     plugin_author = "jxxghp,InfinityPacer,Seed680,jianghannan"
     # 作者主页
@@ -2323,10 +2323,10 @@ class BrushFlowQingWa(_PluginBase):
             if include_label_list:
                 # 如果种子没有labels属性，则不符合条件
                 if not torrent.labels:
-                    return False, f"种子没有标签，不包含指定标签：{brush_config.include_labels}"
-                # 检查种子的labels是否包含任意一个指定的标签
-                if not any(label in torrent.labels for label in include_label_list):
-                    return False, f"不包含指定标签：{brush_config.include_labels}"
+                    return False, f"种子没有标签，不包含全部指定标签：{brush_config.include_labels}"
+                # 检查种子的labels是否包含全部指定的标签
+                if not all(label in torrent.labels for label in include_label_list):
+                    return False, f"不包含全部指定标签 brush_config.include_labels：{brush_config.include_labels} torrent.labels：{torrent.labels}"
 
         # 排除标签规则
         if brush_config.exclude_labels and torrent.labels:
